@@ -1,0 +1,5 @@
+# Netlify redirects — Nexora Labz
+# ▶▶ CUSTOM DOMAIN LATER: no change needed here. Netlify handles the new domain.
+
+# Single canonical home URL (avoid /index.html duplicate)
+/index.html    /    301

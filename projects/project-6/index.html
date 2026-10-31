@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Flowbit — automate the busywork and ship faster. Workflow automation, realtime analytics and smart reports for modern teams. Demo landing page by Nexora Labz.">
+  <title>Flowbit — Demo SaaS Landing Page | Nexora Labz</title>
+
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nexora-labz.netlify.app/projects/project-6/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nexora Labz">
+  <meta property="og:title" content="Flowbit — Demo SaaS Landing Page | Nexora Labz">
+  <meta property="og:description" content="Flowbit — automate the busywork and ship faster. Workflow automation, realtime analytics and smart reports for modern teams. Demo landing page by Nexora La">
+  <meta property="og:url" content="https://nexora-labz.netlify.app/projects/project-6/">
+  <meta property="og:image" content="https://nexora-labz.netlify.app/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nexora-labz.netlify.app/assets/images/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Flowbit — demo landing page · Nexora Labz
+       Palette: navy #0A0F1E · mint #34D399 · violet #8B9CF9 · ink #F5F8FF */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A0F1E; --navy2: #0E1630; --ink: #F5F8FF; --muted: rgba(226, 232, 255, 0.66); --faint: rgba(226, 232, 255, 0.42);
+      --mint: #34D399; --mint-soft: rgba(52, 211, 153, 0.14); --violet: #8B9CF9; --violet-soft: rgba(139, 156, 249, 0.16);
+      --glass: rgba(255, 255, 255, 0.05); --glass2: rgba(255, 255, 255, 0.08); --stroke: rgba(139, 156, 249, 0.18); --danger: #F87171;
+      --fd: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif; --fb: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --glow: 0 12px 38px -10px rgba(52, 211, 153, 0.45); --card: 0 24px 60px -28px rgba(2, 6, 18, 0.9);
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      font-family: var(--fb); color: var(--ink); line-height: 1.6; background-color: var(--navy); overflow-x: hidden; -webkit-font-smoothing: antialiased;
+      background-image: radial-gradient(rgba(139, 156, 249, 0.13) 1px, transparent 1.6px), radial-gradient(ellipse 55% 38% at 82% -8%, rgba(52, 211, 153, 0.09), transparent),
+        radial-gradient(ellipse 48% 40% at 8% 108%, rgba(139, 156, 249, 0.09), transparent);
+      background-size: 26px 26px, 100% 100%, 100% 100%; background-attachment: fixed;
+    }
+    ::selection { background: rgba(52, 211, 153, 0.35); color: #fff; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    svg { vertical-align: middle; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 8px; }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .grad-text { background: linear-gradient(92deg, var(--mint) 10%, var(--violet) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .eyebrow { display: inline-block; font: 600 12px/1 var(--fd); letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.07s; } .d2 { transition-delay: 0.14s; } .d3 { transition-delay: 0.21s; } .d4 { transition-delay: 0.28s; }
+    /* Buttons */
+    .btn {
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 22px;
+      border: none; border-radius: 999px; font: 600 15px/1 var(--fd); cursor: pointer; white-space: nowrap;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+    }
+    .btn-gradient { color: #05130D; background: linear-gradient(135deg, var(--mint), var(--violet)); box-shadow: var(--glow); }
+    .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 18px 48px -10px rgba(52, 211, 153, 0.6); }
+    .btn-ghost { color: var(--ink); background: transparent; border: 1px solid var(--stroke); }
+    .btn-ghost:hover { border-color: rgba(52, 211, 153, 0.55); background: var(--mint-soft); transform: translateY(-2px); }
+    .btn-sm { min-height: 42px; padding: 0 18px; font-size: 14px; }
+    .btn-lg { min-height: 52px; padding: 0 34px; font-size: 16px; }
+    /* Back-to-portfolio pill */
+    .back-pill {
+      position: fixed; top: 86px; left: 18px; z-index: 55; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px;
+      border-radius: 999px; border: 1px solid var(--stroke); color: var(--muted); font: 500 13px/1 var(--fb);
+      background: rgba(14, 22, 48, 0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .back-pill:hover { color: var(--ink); border-color: rgba(52, 211, 153, 0.55); transform: translateY(-1px); }
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 60; background: rgba(10, 15, 30, 0.72); border-bottom: 1px solid transparent;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .navbar.scrolled { border-bottom-color: var(--stroke); background: rgba(10, 15, 30, 0.88); box-shadow: 0 16px 40px -24px rgba(0, 0, 0, 0.8); }
+    .nav-inner { max-width: 1140px; margin: 0 auto; height: 72px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font: 700 20px/1 var(--fd); letter-spacing: -0.01em; }
+    .brand-mark { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; color: #05130D; background: linear-gradient(135deg, var(--mint), var(--violet)); box-shadow: 0 6px 18px -6px rgba(52, 211, 153, 0.55); }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a { min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 10px; color: var(--muted); font: 500 14.5px/1 var(--fb); transition: color 0.2s ease, background 0.2s ease; }
+    .nav-links a:hover { color: var(--ink); background: var(--glass2); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; }
+    .hamburger { display: none; width: 44px; height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; background: transparent; border: 1px solid var(--stroke); border-radius: 12px; }
+    .hamburger span { width: 18px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform 0.28s ease, opacity 0.2s ease; }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: flex; flex-direction: column; padding: 0 24px; max-height: 0; overflow: hidden; opacity: 0;
+      background: rgba(10, 15, 30, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      transition: max-height 0.32s ease, opacity 0.28s ease, padding 0.32s ease;
+    }
+    .mobile-menu.open { max-height: 440px; opacity: 1; padding-bottom: 20px; border-bottom: 1px solid var(--stroke); }
+    .mobile-menu a:not(.btn) {
+      min-height: 48px; display: flex; align-items: center; color: var(--muted); font: 500 15px/1 var(--fb);
+      border-bottom: 1px solid rgba(139, 156, 249, 0.1);
+    }
+    .mobile-menu a:not(.btn):hover { color: var(--ink); }
+    .mobile-menu .btn { margin-top: 16px; }
+    /* Hero */
+    /* Real workspace photograph ambience behind the hero (kept subtle so the dashboard mockup stays the star) */
+    .hero-photo { position: absolute; inset: 0; z-index: -1; }
+    .hero-photo img { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 100vw; height: 100%; object-fit: cover; opacity: 0.16; }
+    .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 15, 26, 0.2) 0%, rgba(10, 15, 26, 0.55) 62%, var(--bg) 100%); }
+    .hero { position: relative; max-width: 1140px; margin: 0 auto; padding: 92px 24px 40px; text-align: center; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 999px; color: var(--muted); border: 1px solid rgba(139, 156, 249, 0.35); background: var(--violet-soft); font: 500 13px/1.3 var(--fb); }
+    .chip strong { color: var(--ink); font-weight: 600; }
+    .hero h1 { font: 700 clamp(2.6rem, 6.4vw, 4.4rem)/1.05 var(--fd); letter-spacing: -0.03em; margin: 24px 0 20px; }
+    .hero-sub { max-width: 640px; margin: 0 auto 34px; color: var(--muted); font-size: 17px; line-height: 1.68; }
+    .waitlist { display: flex; gap: 10px; max-width: 540px; margin: 0 auto; }
+    .waitlist input {
+      flex: 1; min-width: 0; min-height: 52px; padding: 0 18px; border-radius: 14px; color: var(--ink); font: 400 15px/1 var(--fb); outline: none;
+      border: 1px solid var(--stroke); background: var(--glass); transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .waitlist input::placeholder { color: var(--faint); }
+    .waitlist input:focus { border-color: rgba(52, 211, 153, 0.7); box-shadow: 0 0 0 4px var(--mint-soft); }
+    .waitlist input.error { border-color: var(--danger); box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.14); }
+    .form-note { margin-top: 14px; font-size: 13px; color: var(--faint); }
+    /* Dashboard mockup (pure CSS art) */
+    .dashboard { position: relative; max-width: 960px; margin: 64px auto 0; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; pointer-events: none; }
+    .orb-mint { width: 420px; height: 420px; top: -90px; right: -80px; background: rgba(52, 211, 153, 0.16); }
+    .orb-violet { width: 380px; height: 380px; bottom: -110px; left: -90px; background: rgba(139, 156, 249, 0.18); }
+    .dash-window {
+      position: relative; z-index: 1; border-radius: 22px; border: 1px solid var(--stroke); overflow: hidden; text-align: left;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: var(--card), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .dash-titlebar { display: flex; align-items: center; gap: 8px; padding: 13px 18px; border-bottom: 1px solid var(--stroke); background: rgba(10, 15, 30, 0.35); }
+    .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+    .dot-r { background: #F87171; } .dot-y { background: #FBBF24; } .dot-g { background: #34D399; }
+    .dash-url { margin-left: 12px; padding: 6px 16px; border-radius: 999px; font: 400 12px/1 var(--fb); color: var(--faint); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(139, 156, 249, 0.12); }
+    .dash-live { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--mint); font: 600 11px/1 var(--fd); letter-spacing: 0.08em; text-transform: uppercase; }
+    .dash-live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 8px var(--mint); }
+    .dash-body { display: grid; grid-template-columns: 190px 1fr; min-height: 380px; }
+    .dash-side { padding: 16px 12px; border-right: 1px solid var(--stroke); background: rgba(10, 15, 30, 0.35); display: flex; flex-direction: column; gap: 4px; }
+    .side-item { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 12px; border-radius: 10px; color: var(--faint); font: 500 13px/1 var(--fb); }
+    .side-ico { width: 14px; height: 14px; flex: none; border-radius: 4px; background: currentColor; opacity: 0.55; }
+    .side-item.active { color: var(--ink); background: linear-gradient(90deg, var(--mint-soft), var(--violet-soft)); border: 1px solid rgba(52, 211, 153, 0.3); }
+    .dash-main { display: flex; flex-direction: column; gap: 14px; padding: 18px 20px; }
+    .dash-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .dash-head strong { display: block; font: 600 17px/1.3 var(--fd); }
+    .dash-head span { font-size: 12.5px; color: var(--faint); }
+    .dash-btn { flex: none; display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 10px; color: #05130D; font: 600 12.5px/1 var(--fd); background: linear-gradient(135deg, var(--mint), var(--violet)); }
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .stat-card { padding: 13px 14px; border-radius: 14px; border: 1px solid var(--stroke); background: var(--glass); }
+    .stat-label { display: block; font: 600 10.5px/1 var(--fd); letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 8px; }
+    .stat-value { display: block; font: 600 21px/1 var(--fd); letter-spacing: -0.01em; margin-bottom: 6px; }
+    .stat-delta { font: 600 11px/1 var(--fb); }
+    .stat-delta.up { color: var(--mint); } .stat-delta.down { color: var(--violet); }
+    .dash-panels { flex: 1; display: grid; grid-template-columns: 1.6fr 1fr; gap: 12px; }
+    .panel { padding: 16px; border-radius: 16px; border: 1px solid var(--stroke); background: var(--glass); display: flex; flex-direction: column; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; font: 600 12.5px/1 var(--fd); color: var(--muted); }
+    .legend { display: inline-flex; align-items: center; gap: 6px; font: 500 11px/1 var(--fb); color: var(--faint); }
+    .legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .lg-mint { background: var(--mint); } .lg-violet { background: var(--violet); }
+    .bars { flex: 1; display: flex; align-items: flex-end; gap: 7px; min-height: 130px; padding-top: 6px; }
+    .bar { flex: 1; height: var(--h, 50%); border-radius: 6px 6px 2px 2px; transform-origin: bottom; background: linear-gradient(180deg, var(--mint), rgba(52, 211, 153, 0.22)); box-shadow: 0 0 14px -4px rgba(52, 211, 153, 0.5); }
+    .bar.alt { background: linear-gradient(180deg, var(--violet), rgba(139, 156, 249, 0.2)); box-shadow: 0 0 14px -4px rgba(139, 156, 249, 0.5); }
+    .bar-labels { display: flex; justify-content: space-between; margin-top: 10px; color: var(--faint); font: 500 10px/1 var(--fb); letter-spacing: 0.06em; text-transform: uppercase; }
+    .spark-value { font: 700 30px/1 var(--fd); letter-spacing: -0.02em; margin-bottom: 4px; }
+    .trend { color: var(--mint); font: 600 12px/1 var(--fb); padding: 4px 9px; border-radius: 999px; background: var(--mint-soft); }
+    .sparkline { width: 100%; height: auto; margin-top: auto; }
+    /* Logos strip */
+    .logos { max-width: 1140px; margin: 0 auto; padding: 56px 24px 10px; text-align: center; }
+    .logos p { font: 600 11.5px/1 var(--fd); letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint); }
+    .logo-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; list-style: none; }
+    .logo-chip {
+      padding: 12px 24px; border-radius: 999px; border: 1px solid var(--stroke); background: var(--glass);
+      font: 600 15px/1 var(--fd); letter-spacing: 0.05em; color: rgba(226, 232, 255, 0.55);
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .logo-chip:hover { color: var(--ink); border-color: rgba(52, 211, 153, 0.4); }
+    /* Generic sections */
+    section { padding: 88px 24px; }
+    .section-head { max-width: 660px; margin: 0 auto 52px; text-align: center; }
+    .section-head h2 { font: 700 clamp(1.9rem, 4.2vw, 2.7rem)/1.12 var(--fd); letter-spacing: -0.02em; margin: 12px 0 14px; }
+    .section-head p { color: var(--muted); font-size: 16px; line-height: 1.65; }
+    /* Features */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature-card {
+      position: relative; padding: 26px; border-radius: 20px; border: 1px solid var(--stroke); background: var(--glass); overflow: hidden;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .feature-card::before {
+      content: ""; position: absolute; inset: 0 0 auto; height: 1px; opacity: 0;
+      background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.6), transparent); transition: opacity 0.25s ease;
+    }
+    .feature-card:hover { transform: translateY(-5px); border-color: rgba(52, 211, 153, 0.42); box-shadow: var(--card); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 14px; color: var(--mint);
+      background: var(--mint-soft); border: 1px solid rgba(52, 211, 153, 0.35);
+    }
+    .feature-card:nth-child(even) .feature-icon { color: var(--violet); background: var(--violet-soft); border-color: rgba(139, 156, 249, 0.4); }
+    .feature-card h3 { font: 600 18px/1.3 var(--fd); margin-bottom: 9px; }
+    .feature-card p { font-size: 14.5px; line-height: 1.62; color: var(--muted); }
+    /* How it works */
+    .steps { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; max-width: 980px; margin: 0 auto; }
+    .steps::before {
+      content: ""; position: absolute; top: 34px; left: 14%; right: 14%; height: 2px; opacity: 0.55;
+      background: linear-gradient(90deg, transparent, var(--mint), var(--violet), transparent);
+    }
+    .step { position: relative; z-index: 1; text-align: center; padding: 0 10px; }
+    .step-num {
+      width: 68px; height: 68px; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 50%; color: var(--mint);
+      border: 1px solid rgba(52, 211, 153, 0.5); background: var(--navy2); font: 700 24px/1 var(--fd);
+      box-shadow: 0 0 30px -8px rgba(52, 211, 153, 0.55);
+    }
+    .step:nth-child(2) .step-num { border-color: rgba(139, 156, 249, 0.5); color: var(--violet); box-shadow: 0 0 30px -8px rgba(139, 156, 249, 0.55); }
+    .step:nth-child(3) .step-num {
+      border-color: rgba(52, 211, 153, 0.5); color: var(--ink); background: linear-gradient(135deg, var(--mint-soft), var(--violet-soft));
+    }
+    .step h3 { font: 600 19px/1.3 var(--fd); margin-bottom: 10px; }
+    .step p { font-size: 14.5px; line-height: 1.62; color: var(--muted); max-width: 300px; margin: 0 auto; }
+    /* Pricing */
+    .toggle-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 44px; }
+    .toggle-label {
+      min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 0 8px; background: none; border: none;
+      cursor: pointer; font: 500 14.5px/1 var(--fb); color: var(--muted); transition: color 0.2s ease;
+    }
+    .toggle-label.active { color: var(--ink); }
+    .save-badge {
+      display: inline-block; max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; padding: 5px 0; border-radius: 999px;
+      font: 600 11px/1 var(--fd); letter-spacing: 0.04em; color: #05130D; background: linear-gradient(135deg, var(--mint), var(--violet));
+      transition: max-width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    .save-badge.show { max-width: 130px; opacity: 1; padding: 5px 10px; }
+    .switch { position: relative; width: 64px; height: 44px; flex: none; background: transparent; border: none; cursor: pointer; }
+    .switch::before {
+      content: ""; position: absolute; left: 2px; right: 2px; top: 8px; bottom: 8px; border-radius: 999px; border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.08); transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .switch::after {
+      content: ""; position: absolute; top: 11px; left: 7px; width: 22px; height: 22px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--violet)); box-shadow: 0 2px 10px rgba(52, 211, 153, 0.55);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .switch.on::before { background: rgba(52, 211, 153, 0.22); border-color: rgba(52, 211, 153, 0.5); }
+    .switch.on::after { transform: translateX(28px); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+    .plan {
+      display: flex; flex-direction: column; padding: 30px 26px; border-radius: 24px; border: 1px solid var(--stroke); background: var(--glass);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .plan:hover { transform: translateY(-4px); border-color: rgba(139, 156, 249, 0.45); }
+    .plan.popular {
+      position: relative; border-color: rgba(52, 211, 153, 0.55);
+      background: linear-gradient(180deg, rgba(52, 211, 153, 0.09), rgba(139, 156, 249, 0.05));
+      box-shadow: 0 34px 80px -34px rgba(52, 211, 153, 0.4);
+    }
+    .pop-pill {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%); padding: 6px 16px; border-radius: 999px; color: #05130D;
+      font: 700 10.5px/1 var(--fd); letter-spacing: 0.12em; text-transform: uppercase;
+      background: linear-gradient(135deg, var(--mint), var(--violet)); box-shadow: var(--glow);
+    }
+    .plan-name { font: 600 17px/1 var(--fd); }
+    .plan-desc { margin: 8px 0 20px; font-size: 13.5px; color: var(--muted); }
+    .plan-price { display: flex; align-items: baseline; gap: 5px; }
+    .price-num { font: 700 44px/1 var(--fd); letter-spacing: -0.02em; }
+    .per { font: 400 15px/1 var(--fb); color: var(--muted); }
+    .plan-bill { min-height: 20px; margin: 8px 0 20px; font-size: 12.5px; color: var(--faint); }
+    .plan-features { list-style: none; display: grid; gap: 11px; margin-bottom: 26px; flex: 1; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); line-height: 1.45; }
+    .plan-features li::before {
+      content: ""; flex: none; width: 10px; height: 5px; margin-top: 6px; border-left: 2.5px solid var(--mint);
+      border-bottom: 2.5px solid var(--mint); transform: rotate(-45deg);
+    }
+    .plan .btn { width: 100%; }
+    .pricing-note { margin-top: 30px; text-align: center; font-size: 13px; color: var(--faint); }
+    /* FAQ */
+    .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 12px; }
+    .faq-item {
+      border-radius: 16px; border: 1px solid var(--stroke); background: var(--glass); overflow: hidden;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .faq-item.open { border-color: rgba(139, 156, 249, 0.5); background: var(--glass2); }
+    .faq-q {
+      width: 100%; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 17px 22px;
+      background: none; border: none; cursor: pointer; text-align: left; color: var(--ink); font: 500 16px/1.4 var(--fd);
+    }
+    .faq-icon {
+      position: relative; width: 30px; height: 30px; flex: none; border-radius: 50%; border: 1px solid var(--stroke);
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+    .faq-icon::before, .faq-icon::after {
+      content: ""; position: absolute; top: 50%; left: 50%; background: var(--mint); border-radius: 2px; transform: translate(-50%, -50%);
+    }
+    .faq-icon::before { width: 12px; height: 2px; }
+    .faq-icon::after { width: 2px; height: 12px; transition: transform 0.3s ease; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); background: var(--mint-soft); border-color: rgba(52, 211, 153, 0.5); }
+    .faq-item.open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-a p { padding: 0 22px 20px; font-size: 14.5px; line-height: 1.68; color: var(--muted); }
+    /* Final CTA band */
+    .cta-wrap { padding-bottom: 20px; }
+    .cta-band {
+      position: relative; max-width: 980px; margin: 0 auto; padding: 64px 32px; border-radius: 28px; text-align: center; overflow: hidden;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      background: radial-gradient(ellipse at 18% 0%, rgba(52, 211, 153, 0.14), transparent 55%),
+        radial-gradient(ellipse at 85% 100%, rgba(139, 156, 249, 0.16), transparent 55%), var(--navy2);
+    }
+    /* Real team photograph blended into the CTA band */
+    .cta-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; }
+    .cta-band > *:not(.cta-photo) { position: relative; z-index: 1; }
+    .cta-band h2 { font: 700 clamp(1.9rem, 4.4vw, 2.8rem)/1.1 var(--fd); letter-spacing: -0.02em; margin: 12px 0 14px; }
+    .cta-band p { max-width: 480px; margin: 0 auto 28px; color: var(--muted); font-size: 16px; }
+    .cta-mini { display: block; margin-top: 14px; font-size: 12.5px; color: var(--faint); }
+    /* Footer */
+    footer { border-top: 1px solid var(--stroke); padding: 56px 24px 30px; margin-top: 72px; }
+    .footer-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-brand p { max-width: 300px; margin-top: 14px; font-size: 14px; color: var(--muted); }
+    .socials { display: flex; gap: 12px; margin-top: 18px; }
+    .social-btn {
+      width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; color: var(--muted);
+      border: 1px solid var(--stroke); background: var(--glass);
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .social-btn:hover { color: var(--mint); border-color: rgba(52, 211, 153, 0.5); transform: translateY(-2px); }
+    .footer-col h4 { font: 600 12px/1 var(--fd); letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; }
+    .footer-col a { display: flex; align-items: center; min-height: 44px; color: var(--muted); font-size: 14px; transition: color 0.2s ease; }
+    .footer-col a:hover { color: var(--mint); }
+    .footer-bottom {
+      max-width: 1140px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(139, 156, 249, 0.12);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--faint);
+    }
+    .footer-bottom a { color: var(--muted); transition: color 0.2s ease; }
+    .footer-bottom a:hover { color: var(--mint); }
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; z-index: 100; transform: translateX(-50%) translateY(20px); max-width: calc(100vw - 32px);
+      padding: 14px 24px; border-radius: 14px; border: 1px solid rgba(52, 211, 153, 0.5); color: var(--ink); text-align: center;
+      background: rgba(14, 22, 48, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--glow); font: 500 14px/1.4 var(--fb); opacity: 0; pointer-events: none;
+      transition: opacity 0.32s ease, transform 0.32s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.error { border-color: rgba(248, 113, 113, 0.6); box-shadow: 0 12px 38px -10px rgba(248, 113, 113, 0.4); }
+    /* Animations (motion-safe only) */
+    @media (prefers-reduced-motion: no-preference) {
+      .bar { animation: growBar 1s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: var(--d, 0s); }
+      .spark-line { stroke-dasharray: 620; stroke-dashoffset: 620; animation: drawLine 1.8s ease-out 0.5s forwards; }
+      .spark-dot { animation: popDot 0.4s ease-out 2.2s both; }
+      .dash-live::before { animation: pulseDot 2s ease-in-out infinite; }
+    }
+    @keyframes growBar { from { transform: scaleY(0.04); opacity: 0.35; } to { transform: scaleY(1); opacity: 1; } }
+    @keyframes drawLine { to { stroke-dashoffset: 0; } }
+    @keyframes popDot { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); } }
+    /* Responsive ≤1024px */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); } .stat-row { grid-template-columns: repeat(2, 1fr); }
+      .dash-body { grid-template-columns: 150px 1fr; } .dash-panels { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    /* Responsive ≤768px */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; } .hamburger { display: inline-flex; }
+      section { padding: 72px 20px; } .hero { padding-top: 64px; }
+      .dash-side { display: none; } .dash-body { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 34px; max-width: 480px; }
+      .steps::before {
+        top: 44px; bottom: 44px; left: 33px; right: auto; width: 2px; height: auto;
+        background: linear-gradient(180deg, transparent, var(--mint), var(--violet), transparent);
+      }
+      .step { display: grid; grid-template-columns: 68px 1fr; column-gap: 18px; text-align: left; }
+      .step-num { margin: 0; } .step h3 { grid-column: 2; margin-bottom: 6px; } .step p { grid-column: 2; margin: 0; }
+    }
+    /* Responsive ≤520px */
+    @media (max-width: 520px) {
+      .features-grid { grid-template-columns: 1fr; } .waitlist { flex-direction: column; } .waitlist .btn { width: 100%; }
+      .hero h1 { letter-spacing: -0.02em; } .back-pill { top: 84px; left: 12px; padding: 0 13px; font-size: 12px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; } .footer-bottom { flex-direction: column; text-align: center; }
+      .cta-band { padding: 48px 22px; } .toggle-wrap { flex-wrap: wrap; } .dash-head { flex-wrap: wrap; }
+    }
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="back-pill" href="../../index.html">&larr; Back to Nexora Labz</a>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Flowbit — back to top">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6h5a4 4 0 0 1 4 4v4a4 4 0 0 0 4 4"/><circle cx="5" cy="6" r="2.2" fill="currentColor" stroke="none"/><circle cx="19" cy="18" r="2.2" fill="currentColor" stroke="none"/></svg></span>
+        Flowbit
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-ghost btn-sm js-login">Log in</a>
+        <a href="#pricing" class="btn btn-gradient btn-sm">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation menu"
+              aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#" class="js-login">Log in</a>
+      <a href="#pricing" class="btn btn-gradient">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <!-- Real workspace photograph (subtle background ambience) -->
+      <div class="hero-photo" aria-hidden="true">
+        <img src="img/dashboard.jpg" alt="" loading="eager" fetchpriority="high" width="1400" height="933">
+      </div>
+      <span class="chip reveal">&#10022; Backed by <strong>[INVESTOR_NAME]</strong> &mdash; demo</span>
+      <h1 id="heroTitle" class="reveal d1">Automate the busywork.<br><span class="grad-text">Ship faster.</span></h1>
+      <p class="hero-sub reveal d2">
+        Flowbit connects the tools your team already uses, automates the repetitive middle, and shows every
+        workflow live &mdash; so you spend your week shipping product instead of chasing status updates.
+      </p>
+      <form class="waitlist reveal d3" id="waitlistForm" novalidate>
+        <label class="sr-only" for="email">Work email</label>
+        <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
+        <button type="submit" class="btn btn-gradient">Join the waitlist</button>
+      </form>
+      <p class="form-note reveal d3">Free 14-day trial &middot; No credit card &middot; Cancel anytime</p>
+      <!-- Pure CSS dashboard mockup -->
+      <div class="dashboard reveal d4">
+        <div class="orb orb-mint" aria-hidden="true"></div>
+        <div class="orb orb-violet" aria-hidden="true"></div>
+        <div class="dash-window" role="img"
+             aria-label="Preview of the Flowbit dashboard showing live workflow stats, an animated bar chart and a cycle-time sparkline">
+          <div class="dash-titlebar">
+            <span class="dot dot-r" aria-hidden="true"></span><span class="dot dot-y" aria-hidden="true"></span><span class="dot dot-g" aria-hidden="true"></span>
+            <span class="dash-url">app.flowbit.io/overview</span>
+            <span class="dash-live">Live</span>
+          </div>
+          <div class="dash-body">
+            <aside class="dash-side" aria-hidden="true">
+              <div class="side-item active"><span class="side-ico"></span>Overview</div>
+              <div class="side-item"><span class="side-ico"></span>Flows</div>
+              <div class="side-item"><span class="side-ico"></span>Inbox</div>
+              <div class="side-item"><span class="side-ico"></span>Reports</div>
+              <div class="side-item"><span class="side-ico"></span>Members</div>
+              <div class="side-item"><span class="side-ico"></span>Settings</div>
+            </aside>
+            <div class="dash-main">
+              <div class="dash-head">
+                <div>
+                  <strong>Good morning, Ayesha</strong>
+                  <span>Here's what your flows did overnight</span>
+                </div>
+                <span class="dash-btn">+ New flow</span>
+              </div>
+              <div class="stat-row">
+                <div class="stat-card"><span class="stat-label">Runs today</span><span class="stat-value">12,480</span><span class="stat-delta up">&#9650; 18%</span></div>
+                <div class="stat-card"><span class="stat-label">Success rate</span><span class="stat-value">99.2%</span><span class="stat-delta up">&#9650; 0.4%</span></div>
+                <div class="stat-card"><span class="stat-label">Hours saved</span><span class="stat-value">326</span><span class="stat-delta up">&#9650; 41</span></div>
+                <div class="stat-card"><span class="stat-label">Open alerts</span><span class="stat-value">3</span><span class="stat-delta down">&#9660; 5</span></div>
+              </div>
+              <div class="dash-panels">
+                <div class="panel">
+                  <div class="panel-head">
+                    <span>Automations run &middot; this week</span>
+                    <span class="legend"><i class="lg-mint"></i>Now <i class="lg-violet"></i>Last week</span>
+                  </div>
+                  <div class="bars" aria-hidden="true">
+                    <span class="bar" style="--h:42%; --d:.05s"></span><span class="bar alt" style="--h:34%; --d:.10s"></span><span class="bar" style="--h:58%; --d:.15s"></span>
+                    <span class="bar alt" style="--h:48%; --d:.20s"></span><span class="bar" style="--h:66%; --d:.25s"></span><span class="bar alt" style="--h:55%; --d:.30s"></span>
+                    <span class="bar" style="--h:50%; --d:.35s"></span><span class="bar alt" style="--h:44%; --d:.40s"></span><span class="bar" style="--h:74%; --d:.45s"></span>
+                    <span class="bar alt" style="--h:62%; --d:.50s"></span><span class="bar" style="--h:60%; --d:.55s"></span><span class="bar alt" style="--h:52%; --d:.60s"></span>
+                    <span class="bar" style="--h:92%; --d:.65s"></span><span class="bar alt" style="--h:76%; --d:.70s"></span>
+                  </div>
+                  <div class="bar-labels" aria-hidden="true">
+                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-head">
+                    <span>Avg. cycle time</span>
+                    <span class="trend">&minus;32% this month</span>
+                  </div>
+                  <div class="spark-value">4m 12s</div>
+                  <svg class="sparkline" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="sparkStroke" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34D399"/><stop offset="1" stop-color="#8B9CF9"/></linearGradient>
+                      <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34D399" stop-opacity="0.28"/><stop offset="1" stop-color="#34D399" stop-opacity="0"/></linearGradient>
+                    </defs>
+                    <path fill="url(#sparkFill)" d="M0,64 L25,56 L50,60 L75,44 L100,50 L125,34 L150,40 L175,26 L200,32 L225,18 L250,24 L275,12 L300,16 L300,90 L0,90 Z"/>
+                    <path class="spark-line" fill="none" stroke="url(#sparkStroke)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                          d="M0,64 L25,56 L50,60 L75,44 L100,50 L125,34 L150,40 L175,26 L200,32 L225,18 L250,24 L275,12 L300,16"/>
+                    <circle class="spark-dot" cx="296" cy="16" r="4" fill="#34D399"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos strip -->
+    <div class="logos reveal">
+      <p>Trusted by teams at</p>
+      <ul class="logo-row">
+        <li class="logo-chip">ACME</li><li class="logo-chip">Northbeam</li><li class="logo-chip">Loomly</li>
+        <li class="logo-chip">Quantia</li><li class="logo-chip">Hexlab</li>
+      </ul>
+    </div>
+
+    <!-- Features -->
+    <section id="features" aria-labelledby="featuresTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Features</span>
+          <h2 id="featuresTitle">Everything your ops team wishes it had</h2>
+          <p>Six primitives that turn disconnected apps into one smooth, observable system &mdash; with humans in the loop exactly where they belong.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+            <h3>Workflow Automation</h3>
+            <p>Drag triggers, actions and conditions into place. Flowbit runs them on a schedule or in realtime, retrying gracefully whenever a step fails.</p>
+          </article>
+          <article class="feature-card reveal d1">
+            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+            <h3>Realtime Analytics</h3>
+            <p>Live dashboards track every run, hand-off and bottleneck. Know the second a flow slows down instead of hearing about it in standup.</p>
+          </article>
+          <article class="feature-card reveal d2">
+            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
+            <h3>Team Inbox</h3>
+            <p>Approvals, alerts and exceptions land in one shared inbox. Assign, comment and resolve without ever leaving Flowbit.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+            <h3>Smart Reports</h3>
+            <p>Weekly digests that write themselves. Send the metrics that matter to Slack, email or Notion &mdash; formatted and always on time.</p>
+          </article>
+          <article class="feature-card reveal d1">
+            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98"/><path d="M15.41 6.51l-6.82 3.98"/></svg></div>
+            <h3>Integrations</h3>
+            <p>120+ native connectors from Stripe to HubSpot, plus webhooks and a full REST API for everything else in your stack.</p>
+          </article>
+          <article class="feature-card reveal d2">
+            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Enterprise Security</h3>
+            <p>SOC 2 Type II, SSO/SAML, granular roles and audit logs. Your data is encrypted in transit and at rest, always.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" aria-labelledby="howTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 id="howTitle">Live in an afternoon, not a quarter</h2>
+          <p>No implementation project, no consultants. Three steps from chaos to autopilot.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>Connect your tools</h3>
+            <p>Link Slack, Stripe, Notion and 120+ other apps in a couple of clicks. OAuth-secured, read-only by default &mdash; no engineering ticket required.</p>
+          </div>
+          <div class="step reveal d1">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>Build your first flow</h3>
+            <p>Pick a template or start from scratch. Define triggers, add steps, and test everything in the sandbox before it touches production.</p>
+          </div>
+          <div class="step reveal d2">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>Watch work happen</h3>
+            <p>Flip the switch. Flows run quietly in the background while the dashboard shows every step, retry and approval in realtime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" aria-labelledby="pricingTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2 id="pricingTitle">Simple pricing that scales with you</h2>
+          <p>Start free, upgrade when your flows earn their keep. Every plan includes the full visual builder.</p>
+        </div>
+        <div class="toggle-wrap reveal">
+          <button class="toggle-label active" id="labelMonthly" type="button">Monthly</button>
+          <button class="switch" id="billingSwitch" type="button" role="switch" aria-checked="false" aria-label="Toggle yearly billing"></button>
+          <button class="toggle-label" id="labelYearly" type="button">Yearly <span class="save-badge" id="saveBadge">2 months free</span></button>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan reveal">
+            <h3 class="plan-name">Free</h3>
+            <p class="plan-desc">For solo builders testing the waters.</p>
+            <div class="plan-price"><span class="price-num" data-monthly="$0" data-yearly="$0">$0</span><span class="per">/mo</span></div>
+            <p class="plan-bill" data-monthly-note="Free forever &mdash; no card required" data-yearly-note="Free forever &mdash; no card required">Free forever &mdash; no card required</p>
+            <ul class="plan-features">
+              <li>3 active flows</li><li>500 runs per month</li><li>2 team seats</li>
+              <li>7-day run history</li><li>Community support</li>
+            </ul>
+            <button class="btn btn-ghost plan-cta" type="button">Start for free</button>
+          </article>
+          <article class="plan popular reveal d1">
+            <span class="pop-pill">Most Popular</span>
+            <h3 class="plan-name">Growth</h3>
+            <p class="plan-desc">For teams automating real operations.</p>
+            <div class="plan-price"><span class="price-num" data-monthly="$29" data-yearly="$290">$29</span><span class="per" data-monthly="/mo" data-yearly="/yr">/mo</span></div>
+            <p class="plan-bill" data-monthly-note="Billed monthly &middot; cancel anytime" data-yearly-note="Billed yearly &middot; $290 once a year">Billed monthly &middot; cancel anytime</p>
+            <ul class="plan-features">
+              <li>Unlimited flows</li><li>10,000 runs per month</li><li>10 team seats</li>
+              <li>Team inbox + approvals</li><li>30-day run history</li><li>Priority support</li>
+            </ul>
+            <button class="btn btn-gradient plan-cta" type="button">Start 14-day trial</button>
+          </article>
+          <article class="plan reveal d2">
+            <h3 class="plan-name">Scale</h3>
+            <p class="plan-desc">For companies running critical workflows.</p>
+            <div class="plan-price"><span class="price-num" data-monthly="$99" data-yearly="$990">$99</span><span class="per" data-monthly="/mo" data-yearly="/yr">/mo</span></div>
+            <p class="plan-bill" data-monthly-note="Billed monthly &middot; cancel anytime" data-yearly-note="Billed yearly &middot; $990 once a year">Billed monthly &middot; cancel anytime</p>
+            <ul class="plan-features">
+              <li>Everything in Growth</li><li>Unlimited runs</li><li>SSO/SAML + audit logs</li>
+              <li>Custom connectors</li><li>Dedicated success manager</li><li>99.9% uptime SLA</li>
+            </ul>
+            <button class="btn btn-ghost plan-cta" type="button">Talk to sales</button>
+          </article>
+        </div>
+        <p class="pricing-note reveal">
+          All plans include unlimited draft workflows, encryption at rest and our full REST API.
+          Prices in USD &middot; this is a demo page, nothing is billed.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faqTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faqTitle">Questions, answered</h2>
+          <p>Everything you need to know before plugging Flowbit into your stack.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" id="faqQ1" aria-expanded="false" aria-controls="faqA1">What exactly is Flowbit?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a" id="faqA1" role="region" aria-labelledby="faqQ1">
+              <p>Flowbit is a workflow automation platform for operations, growth and product teams. You connect the apps you already use, then build flows &mdash; trigger, action, condition &mdash; that run automatically. Think of it as the connective tissue between your tools.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" id="faqQ2" aria-expanded="false" aria-controls="faqA2">Do I need to write code to build flows?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a" id="faqA2" role="region" aria-labelledby="faqQ2">
+              <p>No. The visual builder covers the vast majority of use cases, and every template is fully editable by non-developers. If you want to go deeper, each step accepts custom JavaScript snippets and we expose a full REST API and webhooks.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" id="faqQ3" aria-expanded="false" aria-controls="faqA3">Which tools does Flowbit integrate with?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a" id="faqA3" role="region" aria-labelledby="faqQ3">
+              <p>120+ native connectors including Slack, Stripe, HubSpot, Notion, Linear, Airtable and Google Workspace. Anything without a native connector works through inbound or outbound webhooks, or our REST API.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" id="faqQ4" aria-expanded="false" aria-controls="faqA4">Is my data secure?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a" id="faqA4" role="region" aria-labelledby="faqQ4">
+              <p>Yes. Flowbit is SOC 2 Type II audited, encrypts data in transit and at rest, and supports SSO/SAML with granular role-based access. Scale plans add full audit logs and configurable data residency.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" id="faqQ5" aria-expanded="false" aria-controls="faqA5">Can I change or cancel my plan later?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a" id="faqA5" role="region" aria-labelledby="faqQ5">
+              <p>Anytime. Upgrades apply instantly with prorated billing, downgrades take effect at the next renewal, and you can export every flow and run log before cancelling. And remember &mdash; this demo collects nothing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-wrap" aria-labelledby="ctaTitle">
+      <div class="cta-band reveal">
+        <img class="cta-photo" src="img/team.jpg" alt="" loading="lazy" width="1400" height="934">
+        <span class="eyebrow">Ready when you are</span>
+        <h2 id="ctaTitle">Put your busywork on autopilot</h2>
+        <p>Join thousands of teams who replaced their copy-paste Mondays with flows that never sleep. Set up your workspace in under ten minutes.</p>
+        <a href="#top" class="btn btn-gradient btn-lg" id="ctaFinal">Get Started Free</a>
+        <span class="cta-mini">No credit card required &middot; Cancel anytime</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="Flowbit — back to top">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6h5a4 4 0 0 1 4 4v4a4 4 0 0 0 4 4"/><circle cx="5" cy="6" r="2.2" fill="currentColor" stroke="none"/><circle cx="19" cy="18" r="2.2" fill="currentColor" stroke="none"/></svg></span>
+          Flowbit
+        </a>
+        <p>Automate the busywork. Ship faster. Flowbit is the workflow layer for modern product and ops teams.</p>
+        <div class="socials">
+          <a class="social-btn" href="[SAAS_TWITTER_URL]" aria-label="Flowbit on X (Twitter)"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></svg></a>
+          <a class="social-btn" href="[SAAS_GITHUB_URL]" aria-label="Flowbit on GitHub"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></a>
+          <a class="social-btn" href="[SAAS_LINKEDIN_URL]" aria-label="Flowbit on LinkedIn"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-col" aria-label="Product links">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <nav class="footer-col" aria-label="Company links">
+        <h4>Company</h4>
+        <a href="#top">About</a>
+        <a href="#top">Careers</a>
+        <a href="#top">Blog</a>
+        <a href="#top">Press kit</a>
+      </nav>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <!-- ▶▶ REPLACE: [SAAS_EMAIL] [SAAS_PHONE] -->
+        <a href="#top">[SAAS_EMAIL]</a>
+        <a href="#top">[SAAS_PHONE]</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Flowbit &mdash; demo landing page. All rights reserved.</span>
+      <span>Crafted by <a href="../../index.html">Abubakar Khan &mdash; Nexora Labz</a></span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      'use strict';
+      const $ = (sel, ctx = document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      /* Toast */
+      const toast = $('#toast');
+      let toastTimer = null;
+      const showToast = (message, type = '') => {
+        toast.innerHTML = message;
+        toast.className = 'toast show' + (type ? ' ' + type : '');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { toast.className = 'toast'; }, 3200);
+      };
+      /* Navbar scrolled state */
+      const navbar = $('#navbar');
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 8);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      /* Mobile navigation */
+      const hamburger = $('#hamburger');
+      const mobileMenu = $('#mobileMenu');
+      const setMenu = (open) => {
+        hamburger.classList.toggle('active', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+        mobileMenu.classList.toggle('open', open);
+      };
+      hamburger.addEventListener('click', () => setMenu(hamburger.getAttribute('aria-expanded') !== 'true'));
+      $$('#mobileMenu a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+      /* Demo log in (disabled) */
+      $$('.js-login').forEach((el) => el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showToast('Demo site &mdash; log in is disabled &#10022;');
+      }));
+      /* Waitlist form with validation */
+      const form = $('#waitlistForm');
+      const emailInput = $('#email');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const value = emailInput.value.trim();
+        if (!emailPattern.test(value)) {
+          emailInput.classList.add('error');
+          showToast('Please enter a valid email address.', 'error');
+          emailInput.focus();
+          return;
+        }
+        emailInput.classList.remove('error');
+        form.reset();
+        showToast("You're on the list! We'll email you the moment we launch &#10022;");
+      });
+      emailInput.addEventListener('input', () => emailInput.classList.remove('error'));
+      /* Pricing: monthly / yearly toggle */
+      const billingSwitch = $('#billingSwitch');
+      const labelMonthly = $('#labelMonthly');
+      const labelYearly = $('#labelYearly');
+      const saveBadge = $('#saveBadge');
+      const priceEls = $$('[data-monthly]');
+      let yearly = false;
+      const renderBilling = () => {
+        priceEls.forEach((el) => { el.innerHTML = yearly ? el.dataset.yearly : el.dataset.monthly; });
+        $$('.plan-bill').forEach((el) => { el.innerHTML = yearly ? el.dataset.yearlyNote : el.dataset.monthlyNote; });
+        billingSwitch.classList.toggle('on', yearly);
+        billingSwitch.setAttribute('aria-checked', String(yearly));
+        labelMonthly.classList.toggle('active', !yearly);
+        labelYearly.classList.toggle('active', yearly);
+        saveBadge.classList.toggle('show', yearly);
+      };
+      billingSwitch.addEventListener('click', () => { yearly = !yearly; renderBilling(); });
+      labelMonthly.addEventListener('click', () => { yearly = false; renderBilling(); });
+      labelYearly.addEventListener('click', () => { yearly = true; renderBilling(); });
+      /* Plan CTAs */
+      $$('.plan-cta').forEach((btn) => btn.addEventListener('click', () => {
+        showToast('Demo pricing &mdash; no signup required &#128640;');
+      }));
+      /* FAQ accordion — one open at a time */
+      const faqItems = $$('.faq-item');
+      const closeItem = (item) => {
+        item.classList.remove('open');
+        $('.faq-q', item).setAttribute('aria-expanded', 'false');
+        $('.faq-a', item).style.maxHeight = '0px';
+      };
+      const openItem = (item) => {
+        item.classList.add('open');
+        const panel = $('.faq-a', item);
+        $('.faq-q', item).setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      };
+      faqItems.forEach((item) => {
+        $('.faq-q', item).addEventListener('click', () => {
+          const wasOpen = item.classList.contains('open');
+          faqItems.forEach(closeItem);
+          if (!wasOpen) openItem(item);
+        });
+      });
+      window.addEventListener('resize', () => {
+        const openPanel = $('.faq-item.open .faq-a');
+        if (openPanel) openPanel.style.maxHeight = openPanel.scrollHeight + 'px';
+      }, { passive: true });
+      /* Reveal on scroll */
+      const revealEls = $$('.reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealEls.forEach((el) => el.classList.add('visible'));
+      } else {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach((el) => io.observe(el));
+      }
+      /* Final CTA → scroll top and focus the waitlist email */
+      $('#ctaFinal').addEventListener('click', () => {
+        window.setTimeout(() => emailInput.focus({ preventScroll: true }), reduceMotion ? 0 : 650);
+      });
+    })();
+  </script>
+</body>
+</html>

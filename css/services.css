@@ -1,0 +1,315 @@
+/* ============================================================
+   NEXORA LABZ — SERVICES PAGE (services.css)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   HERO — wireframe torus-knot field, monumental type
+------------------------------------------------------------ */
+.sv-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + 3rem) 0 5rem;
+  text-align: center;
+}
+.sv-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.sv-fade {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(65% 55% at 50% 42%, transparent 45%, rgba(11,15,26,.55) 100%),
+    linear-gradient(180deg, rgba(11,15,26,.25), transparent 25%, transparent 70%, var(--bg));
+}
+[data-theme='light'] .sv-fade {
+  background:
+    radial-gradient(65% 55% at 50% 42%, transparent 45%, rgba(243,245,251,.6) 100%),
+    linear-gradient(180deg, rgba(243,245,251,.3), transparent 25%, transparent 70%, var(--bg));
+}
+
+.sv-hero-inner { position: relative; z-index: 2; }
+.sv-hero .eyebrow { justify-content: center; }
+.sv-hero .eyebrow::after {
+  content: ''; width: 26px; height: 1px;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+}
+
+.sv-title {
+  font-size: clamp(2.7rem, 13vw, 9rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 1.4rem;
+}
+.sv-sub {
+  max-width: 56ch; margin-inline: auto;
+  color: var(--ink-2); font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+.sv-sub strong { color: var(--ink); }
+
+.sv-floating-chips {
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.sv-floating-chips .chip {
+  position: absolute;
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--bg-2) 70%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-1);
+  animation: chip-float 6s ease-in-out infinite;
+}
+.fc-a { top: 18%; left: 8%;  animation-delay: 0s; }
+.fc-b { top: 30%; right: 10%; animation-delay: .8s; }
+.fc-c { bottom: 24%; left: 14%; animation-delay: 1.6s; }
+.fc-d { bottom: 32%; right: 16%; animation-delay: 2.4s; }
+.fc-e { top: 4%; left: 34%; animation-delay: 3.2s; }
+@keyframes chip-float { 50% { transform: translateY(-14px); } }
+
+/* ------------------------------------------------------------
+   SERVICE TILT CARDS
+------------------------------------------------------------ */
+.sv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.sv-card {
+  padding: 1.9rem 1.7rem;
+  display: flex; flex-direction: column; gap: 0.85rem;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.sv-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 65%);
+  opacity: 0; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.sv-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
+.sv-card:hover::before { opacity: 1; }
+
+.sv-ico {
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: 15px;
+  background: var(--grad);
+  color: #fff;
+  box-shadow: var(--glow);
+  flex: 0 0 auto;
+}
+.sv-ico svg { width: 25px; height: 25px; }
+.sv-card h3 { font-size: 1.16rem; }
+.sv-card > p { color: var(--ink-2); font-size: 0.92rem; flex: 1; }
+
+.sv-list { display: grid; gap: 0.4rem; margin-bottom: 0.6rem; }
+.sv-list li {
+  position: relative; padding-left: 1.2rem;
+  color: var(--muted); font-size: 0.85rem;
+}
+.sv-list li::before {
+  content: '✓';
+  position: absolute; left: 0; top: 0;
+  color: var(--accent-2); font-weight: 700;
+}
+
+.sv-price {
+  align-self: flex-start;
+  font-family: var(--font-alt); font-size: 0.92rem; font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent-2);
+  border-top: 1px dashed var(--border-2);
+  padding-top: 0.7rem; width: 100%;
+}
+/* the service label after the price sits quieter */
+.sv-price small {
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+}
+
+/* ------------------------------------------------------------
+   PROCESS
+------------------------------------------------------------ */
+.process-sec {
+  background:
+    radial-gradient(50% 60% at 50% 0%, var(--accent-soft), transparent 70%);
+}
+.process { position: relative; margin-top: 1rem; }
+.proc-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem; position: relative;
+  /* Perf/fix: reserved headroom so the connector line sits fully
+     ABOVE the cards instead of sliding behind them. */
+  padding-top: 34px;
+}
+.proc-line {
+  position: absolute; top: 12px;
+  /* spans from the horizontal center of column 1 to the center of
+     column 4 (4 equal columns → centers at 12.5% / 87.5%) so the
+     line visually connects all four step cards */
+  left: 12.5%; right: 12.5%;
+  height: 2px; background: var(--border);
+  border-radius: 2px;
+  z-index: 0;
+}
+.proc-line::before,
+.proc-line::after {
+  content: '';
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 10px rgba(124,106,255,.8);
+}
+.proc-line::before { left: -4px; }
+.proc-line::after { right: -4px; }
+.proc-line i {
+  display: block; height: 100%;
+  background: var(--grad);
+  border-radius: 2px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.8s var(--ease-out);
+  box-shadow: 0 0 14px rgba(124,106,255,.7);
+}
+.process.drawn .proc-line i { transform: scaleX(1); }
+.proc-step {
+  text-align: center;
+  padding: 1.6rem 1.1rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition: border-color .3s ease, transform .3s var(--ease-out), box-shadow .3s ease;
+}
+.proc-step:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: var(--glow); }
+.proc-num {
+  font-family: var(--font-display); font-weight: 800; font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.proc-ico {
+  display: grid; place-items: center;
+  width: 52px; height: 52px; margin: 0.7rem auto 0.9rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-2);
+  background: var(--surface-2);
+  color: var(--accent-2);
+}
+.proc-ico svg { width: 22px; height: 22px; }
+.proc-step h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
+.proc-step p { color: var(--ink-2); font-size: 0.88rem; }
+
+/* ------------------------------------------------------------
+   TECH STACK
+------------------------------------------------------------ */
+.stack-grid {
+  display: flex; flex-wrap: wrap; gap: 0.85rem;
+  max-width: 860px;
+}
+.stack-item {
+  padding: 0.85rem 1.4rem;
+  font-family: var(--font-alt); font-weight: 600; font-size: 0.95rem;
+  border-radius: 99px;
+  transition: border-color .3s ease, color .3s ease, transform .3s var(--ease-out), box-shadow .3s ease;
+}
+.stack-item:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}
+.soon-inline {
+  font-style: normal; font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-2);
+  border: 1px solid rgba(45,212,191,.4);
+  border-radius: 99px;
+  padding: 0.1em 0.55em;
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
+
+/* ------------------------------------------------------------
+   FAQ
+------------------------------------------------------------ */
+.faq-wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: start; }
+.faq { display: grid; gap: 0.8rem; }
+.faq-item {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color .3s ease;
+}
+.faq-item[open] { border-color: var(--accent); }
+.faq-item summary {
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  font-family: var(--font-alt); font-weight: 600; font-size: 0.98rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-x { position: relative; width: 14px; height: 14px; flex: 0 0 14px; }
+.faq-x::before, .faq-x::after {
+  content: '';
+  position: absolute; top: 50%; left: 0;
+  width: 14px; height: 2px; border-radius: 2px;
+  background: var(--accent-2);
+  transition: transform 0.3s var(--ease-out);
+}
+.faq-x::after { transform: rotate(90deg); }
+.faq-item[open] .faq-x::after { transform: rotate(0deg); }
+.faq-item p {
+  padding: 0 1.4rem 1.3rem;
+  color: var(--ink-2); font-size: 0.92rem;
+}
+
+/* ------------------------------------------------------------
+   CTA (shared glass banner — gradient glow)
+------------------------------------------------------------ */
+.cta-banner {
+  position: relative;
+  text-align: center;
+  padding: clamp(2.8rem, 7vw, 5rem) clamp(1.4rem, 5vw, 4rem);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+.cta-banner .section-sub { max-width: 52ch; margin-inline: auto; margin-bottom: 2rem; }
+.cta-glow {
+  position: absolute; inset: -40%;
+  background:
+    radial-gradient(38% 38% at 30% 30%, rgba(124,106,255,.22), transparent 70%),
+    radial-gradient(34% 34% at 72% 68%, rgba(45,212,191,.18), transparent 70%);
+  animation: glow-drift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes glow-drift {
+  from { transform: translate(-4%, -3%) scale(1); }
+  to   { transform: translate(4%, 3%) scale(1.12); }
+}
+.cta-banner > * { position: relative; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.hero-cta.center { justify-content: center; }
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .sv-grid { grid-template-columns: repeat(2, 1fr); }
+  .proc-steps { grid-template-columns: repeat(2, 1fr); padding-top: 0; }
+  .proc-line { display: none; } /* connector only makes sense in the 4-across layout */
+}
+@media (max-width: 680px) {
+  .sv-grid { grid-template-columns: 1fr; }
+  .proc-steps { grid-template-columns: 1fr; }
+  .faq-wrap { grid-template-columns: 1fr; }
+  .sv-floating-chips .chip { display: none; } /* avoid clutter on phones */
+  .scroll-hint { display: none; }
+}

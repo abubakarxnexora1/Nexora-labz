@@ -1,0 +1,18 @@
+# Netlify headers — Nexora Labz
+# NOTE: no X-Robots-Tag here on purpose — all pages must stay indexable.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Long cache only for rarely-changing images (distinct filenames).
+# HTML/CSS/JS stay instantly fresh since the site is edited by hand.
+/assets/images/previews/*
+  Cache-Control: public, max-age=2592000
+
+/assets/images/projects/*
+  Cache-Control: public, max-age=2592000
+
+/projects/*/img/*
+  Cache-Control: public, max-age=2592000

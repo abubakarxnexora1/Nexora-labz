@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Saffron & Smoke — an oak-fired restaurant & slow bar demo website with wood-fire menus, gallery, and reservations. Crafted by Abubakar Khan — Nexora Labz.">
+  <title>Saffron & Smoke — Demo Restaurant Website | Nexora Labz</title>
+
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nexora-labz.netlify.app/projects/project-1/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nexora Labz">
+  <meta property="og:title" content="Saffron & Smoke — Demo Restaurant Website | Nexora Labz">
+  <meta property="og:description" content="Saffron & Smoke — an oak-fired restaurant & slow bar demo website with wood-fire menus, gallery, and reservations. Crafted by Abubakar Khan — Nexora Labz.">
+  <meta property="og:url" content="https://nexora-labz.netlify.app/projects/project-1/">
+  <meta property="og:image" content="https://nexora-labz.netlify.app/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nexora-labz.netlify.app/assets/images/og-image.jpg">
+
+  <!-- Fonts: Playfair Display (display serif) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============ Saffron & Smoke — tokens & base ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --espresso: #17100B; --panel: rgba(30, 20, 13, 0.6); --cream: #F5EAD7;
+      --cream-dim: rgba(245, 234, 215, 0.72); --cream-faint: rgba(245, 234, 215, 0.45);
+      --gold: #E8B04B; --gold-soft: rgba(232, 176, 75, 0.25); --ember: #C0392B;
+      --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --radius: 14px; color-scheme: dark;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+    body {
+      font-family: var(--sans); color: var(--cream); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+      /* Pure-CSS ambience: warm radial glows + subtle woven texture */
+      background:
+        radial-gradient(1100px 720px at 88% -10%, rgba(192, 57, 43, 0.16), transparent 62%),
+        radial-gradient(950px 680px at -12% 38%, rgba(232, 176, 75, 0.09), transparent 60%),
+        radial-gradient(900px 620px at 72% 108%, rgba(232, 176, 75, 0.07), transparent 55%),
+        repeating-linear-gradient(45deg, rgba(245, 234, 215, 0.014) 0 2px, transparent 2px 7px),
+        var(--espresso);
+    }
+
+    body.no-scroll { overflow: hidden; }
+    ::selection { background: rgba(232, 176, 75, 0.35); }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #120C07; }
+    ::-webkit-scrollbar-thumb { background: #3A2A18; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #57401F; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .container { width: min(1160px, 92%); margin-inline: auto; }
+
+    /* ============ Buttons ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 13px 30px;
+      border: 1px solid transparent; border-radius: 999px; font-family: var(--sans); font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.04em; text-decoration: none; cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), #D6952F); color: #1A1109; }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232, 176, 75, 0.35), 0 0 22px rgba(232, 176, 75, 0.25); }
+    .btn-ghost { border-color: rgba(232, 176, 75, 0.45); color: var(--gold); background: rgba(232, 176, 75, 0.05); }
+    .btn-ghost:hover { transform: translateY(-2px); background: rgba(232, 176, 75, 0.12); box-shadow: 0 0 22px rgba(232, 176, 75, 0.22); }
+
+    /* ============ Back-to-portfolio pill (always visible) ============ */
+    .back-pill {
+      position: fixed; top: 86px; left: 18px; z-index: 120; display: inline-flex; align-items: center; gap: 8px;
+      min-height: 44px; padding: 10px 18px; border: 1px solid var(--gold-soft); border-radius: 999px;
+      color: var(--cream-dim); font-size: 0.84rem; text-decoration: none;
+      background: rgba(23, 16, 11, 0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .back-pill:hover { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 18px rgba(232, 176, 75, 0.28); }
+
+    /* ============ Navbar — sticky glass ============ */
+    .navbar {
+      position: fixed; inset: 0 0 auto 0; z-index: 100; padding: 12px 0; border-bottom: 1px solid rgba(232, 176, 75, 0.22);
+      background: rgba(23, 16, 11, 0.68); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-family: var(--serif); font-size: 1.32rem; font-weight: 600; color: var(--cream); text-decoration: none; white-space: nowrap; }
+    .brand span { color: var(--gold); font-style: italic; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links .link {
+      position: relative; padding: 12px 2px; font-size: 0.92rem; letter-spacing: 0.04em; color: var(--cream-dim); text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .nav-links .link::after {
+      content: ""; position: absolute; left: 2px; right: 2px; bottom: 6px; height: 1px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+    }
+    .nav-links .link:hover, .nav-links .link.active { color: var(--gold); text-shadow: 0 0 14px rgba(232, 176, 75, 0.55); }
+    .nav-links .link:hover::after, .nav-links .link.active::after { transform: scaleX(1); }
+    .nav-cta { margin-left: 12px; min-height: 44px; padding: 10px 22px; font-size: 0.86rem; }
+    .burger {
+      display: none; position: relative; z-index: 110; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; border: 1px solid var(--gold-soft); border-radius: 10px; background: transparent; cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+    .burger:hover { border-color: var(--gold); }
+    .burger span { width: 20px; height: 2px; border-radius: 2px; background: var(--cream); transition: transform 0.35s ease, opacity 0.25s ease; }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============ Hero — full screen, ember ambience ============ */
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; text-align: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 130px 20px 100px;
+    }
+    /* Real hero photograph sits under the ember ambience; gradient scrim keeps text readable */
+    .hero-photo { position: absolute; inset: 0; z-index: 0; background: #2B1C11; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.52; }
+    .hero-photo::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(23, 16, 11, 0.6) 0%, rgba(23, 16, 11, 0.38) 42%, rgba(23, 16, 11, 0.94) 100%);
+    }
+    .hero-glow { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 1; }
+    .glow-a { width: 540px; height: 540px; top: -150px; right: -130px; background: radial-gradient(circle, rgba(192, 57, 43, 0.38), transparent 65%); animation: pulse 7s ease-in-out infinite; }
+    .glow-b { width: 480px; height: 480px; bottom: -170px; left: -150px; background: radial-gradient(circle, rgba(232, 176, 75, 0.24), transparent 65%); animation: pulse 9s ease-in-out infinite reverse; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.14); opacity: 1; } }
+
+    .embers { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+    .ember {
+      position: absolute; bottom: -12px; border-radius: 50%; opacity: 0; box-shadow: 0 0 8px rgba(232, 176, 75, 0.8);
+      background: radial-gradient(circle at 35% 35%, #FFD98A, var(--gold) 45%, rgba(192, 57, 43, 0) 75%);
+      animation: rise linear infinite;
+    }
+    @keyframes rise {
+      0% { transform: translate(0, 0) scale(1); opacity: 0; }
+      10% { opacity: 0.9; }
+      55% { opacity: 0.65; }
+      100% { transform: translate(var(--dx, 30px), -88vh) scale(0.3); opacity: 0; }
+    }
+
+    .hero-inner { position: relative; z-index: 3; max-width: 840px; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border: 1px solid var(--gold-soft);
+      border-radius: 999px; background: rgba(23, 16, 11, 0.5); backdrop-filter: blur(6px);
+      font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+    }
+    .hero h1 { margin: 28px 0 20px; font-family: var(--serif); font-weight: 600; font-size: clamp(2.7rem, 7.5vw, 5.2rem); line-height: 1.06; letter-spacing: -0.01em; }
+    .hero h1 em, h2 em { font-style: italic; background: linear-gradient(92deg, var(--gold), #E07840); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-sub { max-width: 620px; margin: 0 auto; font-size: 1.06rem; line-height: 1.75; color: var(--cream-dim); }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 36px; }
+    .hero-meta { margin-top: 38px; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--cream-faint); }
+    .stars { color: var(--gold); letter-spacing: 3px; }
+    .scroll-cue {
+      position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 3; display: flex;
+      flex-direction: column; align-items: center; gap: 10px; font-size: 0.68rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--cream-faint); text-decoration: none; transition: color 0.3s ease;
+    }
+    .scroll-cue:hover { color: var(--gold); }
+    .scroll-cue .line { position: relative; width: 1px; height: 44px; overflow: hidden; background: rgba(232, 176, 75, 0.3); }
+    .scroll-cue .line::after { content: ""; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: var(--gold); animation: drip 2.2s ease-in-out infinite; }
+    @keyframes drip { to { top: 110%; } }
+
+    /* ============ Sections — shared ============ */
+    .section { padding: 110px 0; }
+    .section.alt {
+      border-top: 1px solid rgba(232, 176, 75, 0.14); border-bottom: 1px solid rgba(232, 176, 75, 0.14);
+      background: linear-gradient(180deg, rgba(232, 176, 75, 0.03), rgba(192, 57, 43, 0.03));
+    }
+    .sec-head { max-width: 660px; margin: 0 auto 56px; text-align: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px; font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold);
+    }
+    .eyebrow::before, .eyebrow::after { content: ""; width: 34px; height: 1px; }
+    .eyebrow::before { background: linear-gradient(90deg, transparent, var(--gold-soft)); }
+    .eyebrow::after { background: linear-gradient(90deg, var(--gold-soft), transparent); }
+    h2 { margin: 16px 0 14px; font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1.15; }
+    .sec-head p { color: var(--cream-dim); }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.65, 0.25, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.32s; }
+
+    /* ============ Our Story ============ */
+    .story-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+    .story-text .eyebrow { margin-bottom: 6px; }
+    .story-text p { margin-bottom: 16px; color: var(--cream-dim); line-height: 1.8; }
+    .signature { font-family: var(--serif); font-style: italic; font-size: 1.12rem; color: var(--gold); }
+    .story-stats { display: flex; flex-wrap: wrap; gap: 38px; margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--gold-soft); }
+    .story-stats strong { display: block; font-family: var(--serif); font-size: 1.7rem; color: var(--gold); }
+    .story-stats span { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); }
+
+    .plate-wrap { display: flex; justify-content: center; }
+    /* Real photograph card replaces the old CSS-drawn plate */
+    .story-figure {
+      position: relative; width: min(420px, 80vw); margin: 0; overflow: hidden; border-radius: var(--radius);
+      border: 1px solid var(--gold-soft); background: #2B1C11;
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.55), 0 0 70px rgba(232, 176, 75, 0.14);
+    }
+    .story-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 4.6; object-fit: cover; }
+    .story-figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, rgba(23, 16, 11, 0.85)); }
+    .plate-badge {
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 2; padding: 9px 18px;
+      border: 1px solid var(--gold-soft); border-radius: 999px; background: rgba(23, 16, 11, 0.85);
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); white-space: nowrap;
+    }
+
+    /* ============ Menu — tabs + dish grids ============ */
+    .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 46px; }
+    .tab {
+      min-height: 46px; padding: 12px 26px; border: 1px solid var(--gold-soft); border-radius: 999px; background: transparent;
+      color: var(--cream-dim); font-family: var(--sans); font-size: 0.9rem; letter-spacing: 0.06em; cursor: pointer;
+      transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tab:hover { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 16px rgba(232, 176, 75, 0.2); }
+    .tab.active { background: linear-gradient(135deg, var(--gold), #D6952F); border-color: var(--gold); color: #17100B; font-weight: 600; }
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; animation: fadeUp 0.55s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .dish {
+      padding: 24px; border: 1px solid var(--gold-soft); border-radius: var(--radius); background: var(--panel);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dish:hover {
+      transform: translateY(-4px); border-color: rgba(232, 176, 75, 0.55);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42), 0 0 24px rgba(232, 176, 75, 0.12);
+    }
+    .dish-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    /* Dish thumbnails are real photographs now */
+    .dish-ico {
+      flex: none; width: 48px; height: 48px; border-radius: 12px; object-fit: cover;
+      border: 1px solid rgba(232, 176, 75, 0.25); background: #2B1C11;
+    }
+    .dish h3 { font-family: var(--serif); font-size: 1.04rem; font-weight: 600; }
+    .dots { flex: 1; min-width: 14px; height: 1em; margin: 0 4px; border-bottom: 1px dotted rgba(232, 176, 75, 0.35); }
+    .price { font-family: var(--serif); font-size: 1.12rem; color: var(--gold); white-space: nowrap; }
+    .dish p { font-size: 0.9rem; line-height: 1.65; color: var(--cream-dim); }
+
+    /* ============ Gallery — real photography tiles ============ */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .tile {
+      position: relative; aspect-ratio: 4 / 3; overflow: hidden; cursor: pointer; border: 1px solid var(--gold-soft);
+      border-radius: var(--radius); background: #2B1C11; transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .tile:hover { border-color: rgba(232, 176, 75, 0.55); box-shadow: 0 0 28px rgba(232, 176, 75, 0.22), 0 18px 40px rgba(0, 0, 0, 0.45); }
+    .tile-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1); }
+    .tile:hover .tile-photo { transform: scale(1.12); }
+    .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, rgba(23, 16, 11, 0.88)); }
+    .tile-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 18px; }
+    .tile-cap h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+    .tile-cap span { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+
+    /* ============ Reservations ============ */
+    .res-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+    .res-info p { color: var(--cream-dim); line-height: 1.8; }
+    .res-points { list-style: none; display: grid; gap: 14px; margin: 26px 0; }
+    .res-points li { color: var(--cream-dim); font-size: 0.95rem; }
+    .res-note { font-size: 0.88rem; font-style: italic; color: var(--cream-faint); }
+    .res-card { padding: 36px; border: 1px solid var(--gold-soft); border-radius: 18px; background: var(--panel); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { display: block; margin-bottom: 8px; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-faint); }
+    .field input, .field select {
+      width: 100%; min-height: 50px; padding: 12px 16px; border-radius: 10px; background: rgba(23, 16, 11, 0.7);
+      border: 1px solid rgba(232, 176, 75, 0.25); color: var(--cream); font-family: var(--sans); font-size: 0.95rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .field input::placeholder { color: rgba(245, 234, 215, 0.3); }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232, 176, 75, 0.18); }
+    .field.invalid input, .field.invalid select { border-color: var(--ember); box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.16); }
+    .err { display: block; min-height: 18px; margin-top: 6px; font-size: 0.78rem; color: #E98B7F; }
+    .res-card .btn { grid-column: 1 / -1; width: 100%; margin-top: 6px; }
+    .form-note { margin-top: 16px; text-align: center; font-size: 0.8rem; color: var(--cream-faint); }
+
+    .toast {
+      position: fixed; left: 50%; bottom: 30px; z-index: 300; display: flex; align-items: center; gap: 12px;
+      max-width: min(500px, 90vw); padding: 16px 22px; border: 1px solid rgba(232, 176, 75, 0.5); border-radius: 14px;
+      background: rgba(30, 20, 13, 0.96); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(232, 176, 75, 0.16);
+      transform: translate(-50%, 160%); transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.25, 1.15);
+    }
+    .toast.show { transform: translate(-50%, 0); }
+    .toast-ico {
+      flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--ember)); color: #17100B; font-weight: 700;
+    }
+
+    /* ============ Testimonials ============ */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testi {
+      display: flex; flex-direction: column; padding: 30px 26px; border: 1px solid var(--gold-soft);
+      border-radius: var(--radius); background: var(--panel);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .testi:hover {
+      transform: translateY(-4px); border-color: rgba(232, 176, 75, 0.5);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(232, 176, 75, 0.1);
+    }
+    .testi .quote { flex: 1; margin: 14px 0 20px; font-size: 0.94rem; line-height: 1.75; color: var(--cream-dim); }
+    .testi-head { display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(232, 176, 75, 0.14); }
+    .avatar {
+      flex: none; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--ember)); color: #17100B; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em;
+    }
+    .testi-head h3 { font-family: var(--serif); font-size: 1rem; font-weight: 600; }
+    .testi-head span { font-size: 0.76rem; letter-spacing: 0.06em; color: var(--cream-faint); }
+
+    /* ============ Footer ============ */
+    footer { padding-top: 72px; border-top: 1px solid var(--gold-soft); background: linear-gradient(180deg, rgba(23, 16, 11, 0), rgba(12, 8, 5, 0.65)); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 44px; padding-bottom: 52px; }
+    .f-logo { font-size: 1.5rem; }
+    .f-brand p { max-width: 300px; margin: 14px 0 22px; font-size: 0.92rem; color: var(--cream-faint); }
+    .socials { display: flex; gap: 12px; }
+    .socials a {
+      width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--gold-soft); border-radius: 50%;
+      color: var(--cream-dim); transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .socials a:hover { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 16px rgba(232, 176, 75, 0.3); transform: translateY(-2px); }
+    .socials svg { width: 20px; height: 20px; }
+    .f-col h4 { margin-bottom: 20px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); }
+    .hours { list-style: none; }
+    .hours li { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; font-size: 0.92rem; color: var(--cream-dim); }
+    .h-dots { flex: 1; border-bottom: 1px dotted rgba(232, 176, 75, 0.3); }
+    .contact-list { list-style: none; }
+    .contact-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 0.92rem; color: var(--cream-dim); }
+    .contact-list a { color: var(--gold); text-decoration: none; }
+    .contact-list a:hover { text-decoration: underline; }
+    .footer-bottom {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding: 22px 0;
+      border-top: 1px solid rgba(232, 176, 75, 0.14); font-size: 0.84rem; color: var(--cream-faint);
+    }
+    .f-back { color: var(--gold); text-decoration: none; transition: text-shadow 0.3s ease; }
+    .f-back:hover { text-shadow: 0 0 14px rgba(232, 176, 75, 0.55); }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 1024px) {
+      .story-grid { gap: 44px; }
+      .res-grid { gap: 36px; }
+      .gallery-grid { gap: 14px; }
+      .testi-grid { gap: 16px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; row-gap: 36px; }
+      .f-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .burger { display: inline-flex; }
+      .nav-links {
+        position: fixed; inset: 0; z-index: 95; flex-direction: column; justify-content: center; gap: 8px; padding: 96px 24px 40px;
+        background: rgba(18, 12, 7, 0.97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+        transform: translateX(100%); visibility: hidden;
+        transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.3, 1), visibility 0.45s;
+      }
+      .nav-links.open { transform: none; visibility: visible; }
+      .nav-links .link { font-size: 1.35rem; padding: 14px 20px; }
+      .nav-cta { margin: 18px 0 0; }
+      .section { padding: 84px 0; }
+      .sec-head { margin-bottom: 44px; }
+      .story-grid { grid-template-columns: 1fr; gap: 48px; }
+      .story-figure { width: min(320px, 78vw); }
+      .res-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+    }
+
+    @media (max-width: 520px) {
+      .back-pill { top: 78px; padding: 8px 14px; font-size: 0.74rem; }
+      .hero { padding: 116px 18px 86px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .form-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .story-stats { gap: 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .res-card { padding: 26px 20px; }
+    }
+
+    /* ============ Reduced motion ============ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1; transform: none; }
+      .menu-panel { display: grid !important; }
+    </style>
+  </noscript>
+</head>
+
+<body>
+
+  <!-- Always-visible escape hatch back to the portfolio -->
+  <a class="back-pill" href="../../index.html">&larr; Back to Nexora Labz</a>
+
+  <!-- ==================== Navbar ==================== -->
+  <header class="navbar">
+    <div class="nav-inner container">
+      <a class="brand" href="#home" aria-label="Saffron and Smoke — back to top">Saffron <span>&amp;</span> Smoke</a>
+      <button class="burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav-menu" aria-label="Primary navigation">
+        <a class="link" href="#story">Story</a>
+        <a class="link" href="#menu">Menu</a>
+        <a class="link" href="#gallery">Gallery</a>
+        <a class="link" href="#reservations">Reservations</a>
+        <a class="link" href="#contact">Contact</a>
+        <a class="btn btn-gold nav-cta" href="#reservations">Reserve a Table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==================== Hero ==================== -->
+    <section class="hero" id="home">
+      <!-- Real hero photograph (replaces pure-CSS ambience) -->
+      <div class="hero-photo" aria-hidden="true">
+        <img src="img/hero.jpg" alt="" loading="eager" fetchpriority="high" width="1600" height="2400">
+      </div>
+      <div class="hero-glow glow-a" aria-hidden="true"></div>
+      <div class="hero-glow glow-b" aria-hidden="true"></div>
+      <div class="embers" aria-hidden="true">
+        <span class="ember" style="left:4%; width:5px; height:5px; animation-duration:9s; animation-delay:0s; --dx:40px"></span>
+        <span class="ember" style="left:12%; width:3px; height:3px; animation-duration:12s; animation-delay:2s; --dx:-30px"></span>
+        <span class="ember" style="left:20%; width:6px; height:6px; animation-duration:8s; animation-delay:4s; --dx:50px"></span>
+        <span class="ember" style="left:28%; width:4px; height:4px; animation-duration:11s; animation-delay:1s; --dx:-40px"></span>
+        <span class="ember" style="left:37%; width:5px; height:5px; animation-duration:10s; animation-delay:5s; --dx:30px"></span>
+        <span class="ember" style="left:46%; width:3px; height:3px; animation-duration:13s; animation-delay:3s; --dx:-50px"></span>
+        <span class="ember" style="left:55%; width:6px; height:6px; animation-duration:9s; animation-delay:6s; --dx:40px"></span>
+        <span class="ember" style="left:63%; width:4px; height:4px; animation-duration:12s; animation-delay:0.5s; --dx:-30px"></span>
+        <span class="ember" style="left:71%; width:5px; height:5px; animation-duration:10s; animation-delay:2.5s; --dx:60px"></span>
+        <span class="ember" style="left:79%; width:3px; height:3px; animation-duration:14s; animation-delay:4.5s; --dx:-60px"></span>
+        <span class="ember" style="left:87%; width:6px; height:6px; animation-duration:8.5s; animation-delay:1.5s; --dx:30px"></span>
+        <span class="ember" style="left:94%; width:4px; height:4px; animation-duration:11.5s; animation-delay:3.5s; --dx:-40px"></span>
+      </div>
+      <div class="hero-inner">
+        <span class="kicker reveal">🔥 Oak-Fired Kitchen · Est. 2016</span>
+        <h1 class="reveal d1">Where <em>Fire</em> Meets Flavor</h1>
+        <p class="hero-sub reveal d2">An oak-fired restaurant and slow bar tucked inside a restored downtown firehouse. Seasonal plates, smoked cocktails, and evenings that linger — served under a glow of amber and ember.</p>
+        <div class="hero-actions reveal d3">
+          <a class="btn btn-gold" href="#reservations">Reserve a Table</a>
+          <a class="btn btn-ghost" href="#menu">Explore the Menu</a>
+        </div>
+        <p class="hero-meta reveal d3"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 · Loved by 1,200+ diners</p>
+      </div>
+      <a class="scroll-cue" href="#story" aria-label="Scroll down to our story"><span class="line" aria-hidden="true"></span>Scroll</a>
+    </section>
+
+    <!-- ==================== Our Story ==================== -->
+    <section class="section" id="story">
+      <div class="container story-grid">
+        <div class="story-text">
+          <span class="eyebrow reveal">Our Story</span>
+          <h2 class="reveal d1">Born from <em>Fire</em>,<br>Raised on Flavor</h2>
+          <p class="reveal d2">Tucked into a restored 1920s firehouse, Saffron &amp; Smoke began with a single oak-burning hearth and a simple belief: the best flavor is coaxed out slowly, never rushed. Chef Amara Reyes builds every dish around live fire — from ember-roasted vegetables to dry-aged steaks finished over smoldering hardwood.</p>
+          <p class="reveal d2">We work with a small circle of local farms and fisheries, and the menu turns with the seasons. Saffron threads are bloomed by hand each morning, breads are proofed overnight, and every sauce begins with bones or vegetables roasted in the dying embers of the night before. It's slower cooking for a faster world.</p>
+          <p class="signature reveal d3">— Chef Amara Reyes, Founder</p>
+          <div class="story-stats reveal d3">
+            <div><strong>12+</strong><span>Years at the hearth</span></div>
+            <div><strong>38</strong><span>Seasonal dishes</span></div>
+            <div><strong>4.9★</strong><span>Guest rating</span></div>
+          </div>
+        </div>
+        <div class="plate-wrap reveal d2">
+          <figure class="story-figure">
+            <img class="story-photo" src="img/story.jpg" alt="Chef carefully plating a fine-dining dish in the Saffron and Smoke kitchen" loading="lazy" width="900" height="1100">
+            <span class="plate-badge">Wood-Fired Daily</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Menu ==================== -->
+    <section class="section alt" id="menu">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">The Menu</span>
+          <h2>A Menu Written by the <em>Flame</em></h2>
+          <p>Four chapters, one fire. Everything below is cooked over oak and ember, and changes with the seasons.</p>
+        </div>
+
+        <div class="tabs reveal d1" role="tablist" aria-label="Menu categories">
+          <button class="tab active" role="tab" id="tab-starters" aria-selected="true" aria-controls="panel-starters" data-target="panel-starters" type="button">Starters</button>
+          <button class="tab" role="tab" id="tab-mains" aria-selected="false" aria-controls="panel-mains" data-target="panel-mains" type="button">Mains</button>
+          <button class="tab" role="tab" id="tab-desserts" aria-selected="false" aria-controls="panel-desserts" data-target="panel-desserts" type="button">Desserts</button>
+          <button class="tab" role="tab" id="tab-drinks" aria-selected="false" aria-controls="panel-drinks" data-target="panel-drinks" type="button">Drinks</button>
+        </div>
+
+        <div class="menu-panel active" id="panel-starters" role="tabpanel" aria-labelledby="tab-starters">
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-bread.jpg" alt="" loading="lazy" width="48" height="48"><h3>Charred Ember Bread</h3><span class="dots" aria-hidden="true"></span><span class="price">$9</span></div>
+            <p>House sourdough kissed by open flame, served with whipped smoked butter and flaky sea salt.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-bisque.jpg" alt="" loading="lazy" width="48" height="48"><h3>Smoked Tomato Bisque</h3><span class="dots" aria-hidden="true"></span><span class="price">$12</span></div>
+            <p>Slow-roasted heirloom tomatoes finished with basil oil, crème fraîche and toasted sourdough crumbs.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-prawns.jpg" alt="" loading="lazy" width="48" height="48"><h3>Fire-Kissed Prawns</h3><span class="dots" aria-hidden="true"></span><span class="price">$16</span></div>
+            <p>Chili-garlic prawns seared over oak embers, with charred lemon and a bright herb oil.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-beet.jpg" alt="" loading="lazy" width="48" height="48"><h3>Golden Beet Carpaccio</h3><span class="dots" aria-hidden="true"></span><span class="price">$13</span></div>
+            <p>Shaved golden beets, whipped ricotta, toasted pistachio and a drizzle of smoked hot honey.</p>
+          </article>
+        </div>
+
+        <div class="menu-panel" id="panel-mains" role="tabpanel" aria-labelledby="tab-mains">
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/g-ribeye.jpg" alt="" loading="lazy" width="48" height="48"><h3>Ember-Seared Ribeye</h3><span class="dots" aria-hidden="true"></span><span class="price">$42</span></div>
+            <p>21-day dry-aged ribeye crusted over hardwood, with bone-marrow butter and fire-roasted onions.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/g-salmon.jpg" alt="" loading="lazy" width="48" height="48"><h3>Cedar Plank Salmon</h3><span class="dots" aria-hidden="true"></span><span class="price">$29</span></div>
+            <p>Maple-glazed salmon roasted on smoking cedar, with charred citrus and dill beurre blanc.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/g-risotto.jpg" alt="" loading="lazy" width="48" height="48"><h3>Saffron Risotto</h3><span class="dots" aria-hidden="true"></span><span class="price">$24</span></div>
+            <p>Carnaroli rice stirred with bloomed saffron threads, aged parmesan crisp and brown butter.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-cauliflower.jpg" alt="" loading="lazy" width="48" height="48"><h3>Smokehouse Cauliflower</h3><span class="dots" aria-hidden="true"></span><span class="price">$21</span></div>
+            <p>Whole-roasted cauliflower glazed in tahini ember sauce, finished with dukkah and herbs.</p>
+          </article>
+        </div>
+
+        <div class="menu-panel" id="panel-desserts" role="tabpanel" aria-labelledby="tab-desserts">
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/g-brulee.jpg" alt="" loading="lazy" width="48" height="48"><h3>Burnt Honey Brûlée</h3><span class="dots" aria-hidden="true"></span><span class="price">$11</span></div>
+            <p>Torched vanilla custard layered with smoked honey and a shard of honeycomb.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-torte.jpg" alt="" loading="lazy" width="48" height="48"><h3>Ember Chocolate Torte</h3><span class="dots" aria-hidden="true"></span><span class="price">$12</span></div>
+            <p>70% dark chocolate torte with chili caramel, espresso cream and cocoa nib crunch.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/g-peach.jpg" alt="" loading="lazy" width="48" height="48"><h3>Grilled Peach &amp; Mascarpone</h3><span class="dots" aria-hidden="true"></span><span class="price">$10</span></div>
+            <p>Whiskey-glazed peaches charred on the grill, with mascarpone cream and candied pecans.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-basbousa.jpg" alt="" loading="lazy" width="48" height="48"><h3>Cardamom Basbousa</h3><span class="dots" aria-hidden="true"></span><span class="price">$9</span></div>
+            <p>Warm semolina cake soaked in orange-blossom syrup, served with clotted cream.</p>
+          </article>
+        </div>
+
+        <div class="menu-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks">
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/g-cocktail.jpg" alt="" loading="lazy" width="48" height="48"><h3>Smoked Old Fashioned</h3><span class="dots" aria-hidden="true"></span><span class="price">$15</span></div>
+            <p>Barrel-aged bourbon stirred with demerara, cherrywood smoke and expressed orange oils.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-lemonade.jpg" alt="" loading="lazy" width="48" height="48"><h3>Saffron Rose Lemonade</h3><span class="dots" aria-hidden="true"></span><span class="price">$7</span></div>
+            <p>Saffron-infused lemonade brightened with rose water and topped with sparkling water.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-espresso.jpg" alt="" loading="lazy" width="48" height="48"><h3>Ember Espresso Martini</h3><span class="dots" aria-hidden="true"></span><span class="price">$14</span></div>
+            <p>Cold brew, coffee liqueur and vanilla vodka with a whisper of smoked salt on top.</p>
+          </article>
+          <article class="dish">
+            <div class="dish-top"><img class="dish-ico" src="img/m-latte.jpg" alt="" loading="lazy" width="48" height="48"><h3>Golden Turmeric Latte</h3><span class="dots" aria-hidden="true"></span><span class="price">$6</span></div>
+            <p>Steamed oat milk whisked with turmeric, cinnamon and wild honey — zero proof, full glow.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Gallery ==================== -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Gallery</span>
+          <h2>Plates Worth <em>Framing</em></h2>
+          <p>A small taste of what leaves the pass each night — photographed straight from the fire, no filters needed.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="tile reveal">
+            <img class="tile-photo" src="img/g-ribeye.jpg" alt="Ember-seared ribeye steak with charred edges on a dark plate" loading="lazy" width="900" height="601">
+            <figcaption class="tile-cap"><h3>Ember-Seared Ribeye</h3><span>House Signature</span></figcaption>
+          </figure>
+          <figure class="tile reveal d1">
+            <img class="tile-photo" src="img/g-risotto.jpg" alt="Creamy saffron risotto plated in a white bowl" loading="lazy" width="900" height="601">
+            <figcaption class="tile-cap"><h3>Saffron Risotto</h3><span>Vegetarian</span></figcaption>
+          </figure>
+          <figure class="tile reveal d2">
+            <img class="tile-photo" src="img/g-salmon.jpg" alt="Cedar plank salmon fillet with salsa on an elegant plate" loading="lazy" width="900" height="1350">
+            <figcaption class="tile-cap"><h3>Cedar Plank Salmon</h3><span>Catch of the Day</span></figcaption>
+          </figure>
+          <figure class="tile reveal d1">
+            <img class="tile-photo" src="img/g-brulee.jpg" alt="Burnt honey brûlée dessert with caramel being poured over the top" loading="lazy" width="900" height="1125">
+            <figcaption class="tile-cap"><h3>Burnt Honey Brûlée</h3><span>Sweet Finish</span></figcaption>
+          </figure>
+          <figure class="tile reveal d2">
+            <img class="tile-photo" src="img/g-cocktail.jpg" alt="Smoked old fashioned cocktail garnished with rosemary on a wooden board" loading="lazy" width="900" height="600">
+            <figcaption class="tile-cap"><h3>Smoked Old Fashioned</h3><span>From the Slow Bar</span></figcaption>
+          </figure>
+          <figure class="tile reveal d3">
+            <img class="tile-photo" src="img/g-peach.jpg" alt="Grilled peach half served with mascarpone cream and caramel drizzle" loading="lazy" width="900" height="600">
+            <figcaption class="tile-cap"><h3>Grilled Peach &amp; Mascarpone</h3><span>Seasonal</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Reservations ==================== -->
+    <section class="section" id="reservations">
+      <div class="container res-grid">
+        <div class="res-info">
+          <span class="eyebrow reveal">Reservations</span>
+          <h2 class="reveal d1">Reserve Your <em>Evening</em></h2>
+          <p class="reveal d2">Tables are released 30 days ahead, and the hearth-side seats go first. Tell us when, and we'll keep the fire low and the plates coming.</p>
+          <ul class="res-points reveal d2">
+            <li>🍷 Sommelier-paired tasting menus for parties of 4 or more</li>
+            <li>🎂 Private ember room for celebrations of up to 12 guests</li>
+            <li>⏱️ Tables are held for 15 minutes past the booking time</li>
+          </ul>
+          <p class="res-note reveal d3">Parties larger than 12? Call us at [RESTAURANT_PHONE] and we'll build a custom fire-side feast for you.</p>
+        </div>
+        <form class="res-card reveal d2" id="res-form" novalidate>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="res-name">Full Name</label>
+              <input type="text" id="res-name" name="name" placeholder="Jane Doe" autocomplete="name">
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field full">
+              <label for="res-email">Email Address</label>
+              <input type="email" id="res-email" name="email" placeholder="jane@example.com" autocomplete="email">
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="res-date">Date</label>
+              <input type="date" id="res-date" name="date">
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="res-time">Time</label>
+              <select id="res-time" name="time">
+                <option value="" selected disabled>Select a time</option>
+                <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option>
+                <option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option>
+                <option>9:00 PM</option><option>9:30 PM</option><option>10:00 PM</option>
+              </select>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field full">
+              <label for="res-guests">Number of Guests</label>
+              <input type="number" id="res-guests" name="guests" min="1" max="12" placeholder="2" inputmode="numeric">
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <button class="btn btn-gold" type="submit">Request Reservation</button>
+          </div>
+          <p class="form-note">No payment needed — we confirm every booking by email within 2 hours.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== Testimonials ==================== -->
+    <section class="section alt" id="testimonials">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="eyebrow">Kind Words</span>
+          <h2>What Our <em>Guests</em> Say</h2>
+          <p>Nights by the hearth, remembered in our guests' own words.</p>
+        </div>
+        <div class="testi-grid">
+          <article class="testi reveal">
+            <div class="stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+            <p class="quote">"The ribeye arrived still whispering smoke. I've eaten at steakhouses on three continents and nothing touched the crust on this one. The saffron risotto alone is worth the flight."</p>
+            <div class="testi-head">
+              <span class="avatar" aria-hidden="true">AR</span>
+              <div><h3>Ayesha Rahman</h3><span>Food Writer — The Daily Plate</span></div>
+            </div>
+          </article>
+          <article class="testi reveal d1">
+            <div class="stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+            <p class="quote">"Every dish tastes like it was kissed by the fire itself. We've been coming every anniversary since 2017 and the menu still finds a way to surprise us. The staff remember your name and your favorite table."</p>
+            <div class="testi-head">
+              <span class="avatar" aria-hidden="true">MK</span>
+              <div><h3>Marcus Klein</h3><span>Regular since 2017</span></div>
+            </div>
+          </article>
+          <article class="testi reveal d2">
+            <div class="stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+            <p class="quote">"They turned our anniversary dinner into something cinematic — the private ember room, the smoked old fashioneds, dessert torched right at the table. Book the hearth seats. Trust me on this one."</p>
+            <div class="testi-head">
+              <span class="avatar" aria-hidden="true">JL</span>
+              <div><h3>Jenna Lau</h3><span>Guest — Ember Room</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== Footer ==================== -->
+  <footer id="contact">
+    <div class="container footer-grid">
+      <div class="f-brand">
+        <a class="brand f-logo" href="#home">Saffron <span>&amp;</span> Smoke</a>
+        <p>An oak-fired restaurant &amp; slow bar in the old downtown firehouse. Come hungry, leave glowing.</p>
+        <div class="socials">
+          <a href="[RESTAURANT_FACEBOOK_URL]" aria-label="Saffron and Smoke on Facebook" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.2h2.2V5h-2.7C11.3 5 10 6.7 10 8.7V11H7.8v3H10v6h3v-6h2.3l.6-3H13V9c0-.5.4-.8 1-.8z"/></svg>
+          </a>
+          <a href="[RESTAURANT_INSTAGRAM_URL]" aria-label="Saffron and Smoke on Instagram" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Opening Hours</h4>
+        <ul class="hours">
+          <li><span>Tue – Thu</span><span class="h-dots" aria-hidden="true"></span><span>5 PM – 10 PM</span></li>
+          <li><span>Fri – Sat</span><span class="h-dots" aria-hidden="true"></span><span>5 PM – 12 AM</span></li>
+          <li><span>Sunday</span><span class="h-dots" aria-hidden="true"></span><span>11 AM – 3 PM</span></li>
+          <li><span>Monday</span><span class="h-dots" aria-hidden="true"></span><span>Closed</span></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <!-- ▶▶ REPLACE: [RESTAURANT_PHONE] [RESTAURANT_EMAIL] [RESTAURANT_ADDRESS] -->
+        <ul class="contact-list">
+          <li>📞 <a href="tel:[RESTAURANT_PHONE]">[RESTAURANT_PHONE]</a></li>
+          <li>✉️ <a href="mailto:[RESTAURANT_EMAIL]">[RESTAURANT_EMAIL]</a></li>
+          <li>📍 <span>[RESTAURANT_ADDRESS]</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year">2025</span> Saffron &amp; Smoke · Crafted by Abubakar Khan — Nexora Labz</p>
+      <a class="f-back" href="../../index.html">&larr; Back to Nexora Labz</a>
+    </div>
+  </footer>
+
+  <!-- ==================== Toast ==================== -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-ico" aria-hidden="true">✓</span>
+    <span id="toast-msg">Reservation request sent!</span>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const $ = (sel, ctx = document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+      /* ---------- Mobile navigation ---------- */
+      const burger = $('#burger');
+      const navMenu = $('#nav-menu');
+
+      const closeMenu = () => {
+        burger.classList.remove('open');
+        navMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
+      };
+
+      burger.addEventListener('click', () => {
+        const open = navMenu.classList.toggle('open');
+        burger.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('no-scroll', open);
+      });
+
+      $$('#nav-menu a').forEach(link => link.addEventListener('click', closeMenu));
+      window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+
+      /* ---------- Menu tabs ---------- */
+      const tabs = $$('.tab');
+      tabs.forEach(tab => tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          const on = t === tab;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        $$('.menu-panel').forEach(panel => panel.classList.toggle('active', panel.id === tab.dataset.target));
+      }));
+
+      /* ---------- Reveal on scroll ---------- */
+      const revealEls = $$('.reveal');
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        revealEls.forEach(el => el.classList.add('visible'));
+      } else {
+        const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => revealObserver.observe(el));
+      }
+
+      /* ---------- Active nav link highlight ---------- */
+      const navAnchors = $$('#nav-menu a[href^="#"]');
+
+      if ('IntersectionObserver' in window) {
+        const spy = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+          }
+        }), { rootMargin: '-40% 0px -55% 0px' });
+        $$('main section[id], footer[id]').forEach(section => spy.observe(section));
+      }
+
+      /* ---------- Reservation form + toast ---------- */
+      const form = $('#res-form');
+      const toast = $('#toast');
+      const toastMsg = $('#toast-msg');
+      const dateInput = $('#res-date');
+      let toastTimer;
+
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      const showToast = message => {
+        toastMsg.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+      };
+
+      const emailOk = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+      const setError = (id, message) => {
+        const field = $('#' + id).closest('.field');
+        field.classList.toggle('invalid', Boolean(message));
+        field.querySelector('.err').textContent = message || '';
+        return !message;
+      };
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const name = $('#res-name').value.trim();
+        const email = $('#res-email').value.trim();
+        const date = dateInput.value;
+        const time = $('#res-time').value;
+        const guests = Number($('#res-guests').value);
+
+        let valid = true;
+        valid = setError('res-name', name.length >= 2 ? '' : 'Please tell us your name.') && valid;
+        valid = setError('res-email', emailOk(email) ? '' : 'Please enter a valid email address.') && valid;
+        valid = setError('res-date', !date ? 'Please choose a date.' : (date < dateInput.min ? 'Please choose a future date.' : '')) && valid;
+        valid = setError('res-time', time ? '' : 'Please pick a time.') && valid;
+        valid = setError('res-guests', guests >= 1 && guests <= 12 ? '' : 'Parties of 1–12 only.') && valid;
+
+        if (!valid) return;
+
+        showToast(`Thank you, ${name.split(' ')[0]}! Your table for ${guests} on ${date} at ${time} has been requested. We'll confirm by email shortly.`);
+        form.reset();
+      });
+
+      $$('#res-form input, #res-form select').forEach(el => {
+        el.addEventListener('input', () => setError(el.id, ''));
+      });
+
+      /* ---------- Footer year ---------- */
+      $('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

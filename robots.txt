@@ -1,0 +1,8 @@
+# Nexora Labz — robots.txt
+# Allow all crawlers to index everything, point them to the sitemap.
+# ▶▶ CUSTOM DOMAIN LATER: replace the sitemap URL below with your new domain.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://nexora-labz.netlify.app/sitemap.xml

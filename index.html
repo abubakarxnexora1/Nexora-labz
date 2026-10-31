@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- ============================================================
+       NEXORA LABZ — HOME
+       Owner: Abubakar Khan  •  Frontend & Web Developer
+  ============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ▶▶ GOOGLE SEARCH CONSOLE: after deploying, verify ownership at
+       https://search.google.com/search-console and paste the meta tag below ◀▶ -->
+  <!-- <meta name="google-site-verification" content="PASTE-YOUR-VERIFICATION-CODE" /> -->
+
+  <!-- ▶▶ CUSTOM DOMAIN LATER: find & replace "https://nexora-labz.netlify.app"
+       in all .html files + robots.txt + sitemap.xml + netlify.toml ◀▶ -->
+  <title>Nexora Labz | Web Development by Abubakar Khan</title>
+  <meta name="description" content="Nexora Labz is the web development studio of Abubakar Khan, frontend developer in Pakistan — landing pages, business websites and fast, responsive web design.">
+  <meta name="keywords" content="Nexora Labz, Abubakar Khan, Abubakar Khan web developer, Nexora Labz web development, frontend developer Pakistan">
+  <meta name="author" content="Abubakar Khan">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0B0F1A">
+  <link rel="canonical" href="https://nexora-labz.netlify.app/">
+
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nexora Labz">
+  <meta property="og:title" content="Nexora Labz | Web Development by Abubakar Khan">
+  <meta property="og:description" content="Landing pages, portfolio and business websites — fast, responsive and animated. Built by frontend developer Abubakar Khan.">
+  <meta property="og:url" content="https://nexora-labz.netlify.app/">
+  <meta property="og:image" content="https://nexora-labz.netlify.app/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Nexora Labz — web development by Abubakar Khan">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nexora Labz | Web Development by Abubakar Khan">
+  <meta name="twitter:description" content="Landing pages, portfolio and business websites — fast, responsive and animated. Built by frontend developer Abubakar Khan.">
+  <meta name="twitter:image" content="https://nexora-labz.netlify.app/assets/images/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Profile photo: preload the exact file the hero will use so it paints
+       once, instantly — no flicker, no second load. sizes accounts for the
+       CSS zoom (2.3×) on the photo frame, so the browser fetches a file
+       large enough to stay sharp. -->
+  <link rel="preload" as="image" href="assets/images/abubakar-800.webp"
+        imagesrcset="assets/images/abubakar-480.webp 480w, assets/images/abubakar-800.webp 800w, assets/images/abubakar-1200.webp 1200w"
+        imagesizes="(max-width: 768px) 152vw, 782px" fetchpriority="high">
+
+  <!-- Fonts: Syne (display) + Space Grotesk (UI) + Inter (body) -->
+  <!-- Fonts: self-hosted (Syne + Space Grotesk + Inter) — no third-party request -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Syne-800.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/SpaceGrotesk-400.woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+
+  <!-- Structured data: Organization + WebSite + Person + Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nexora-labz.netlify.app/#organization",
+        "name": "Nexora Labz",
+        "url": "https://nexora-labz.netlify.app/",
+        "logo": "https://nexora-labz.netlify.app/assets/images/favicon-192x192.png",
+        "image": "https://nexora-labz.netlify.app/assets/images/og-image.jpg",
+        "description": "Web development studio by Abubakar Khan — landing pages, portfolio websites and business websites.",
+        "email": "abubakarxnexora@gmail.com",
+        "telephone": "+923700018080",
+        "address": { "@type": "PostalAddress", "addressCountry": "PK" },
+        "founder": { "@id": "https://nexora-labz.netlify.app/#person" },
+        "sameAs": [
+          "https://www.linkedin.com/in/nexora-abubakar/",
+          "https://github.com/abubakarxnexora1",
+          "https://www.instagram.com/abubakarxnexora/",
+          "https://www.facebook.com/profile.php?id=61595857236922"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nexora-labz.netlify.app/#website",
+        "url": "https://nexora-labz.netlify.app/",
+        "name": "Nexora Labz",
+        "alternateName": "Nexora Labz — Web Development by Abubakar Khan",
+        "publisher": { "@id": "https://nexora-labz.netlify.app/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://nexora-labz.netlify.app/#person",
+        "name": "Abubakar Khan",
+        "jobTitle": "Frontend Developer & Web Developer",
+        "description": "Frontend and web developer from Pakistan, founder of Nexora Labz — building landing pages, portfolio and business websites.",
+        "image": "https://nexora-labz.netlify.app/assets/images/abubakar-800.webp",
+        "url": "https://nexora-labz.netlify.app/about.html",
+        "email": "mailto:abubakarxnexora@gmail.com",
+        "telephone": "+923700018080",
+        "worksFor": { "@id": "https://nexora-labz.netlify.app/#organization" },
+        "address": { "@type": "PostalAddress", "addressCountry": "Pakistan" },
+        "knowsAbout": ["HTML5", "CSS3", "JavaScript", "Responsive Web Design", "Web Animations", "Web Performance"],
+        "sameAs": [
+          "https://www.linkedin.com/in/nexora-abubakar/",
+          "https://github.com/abubakarxnexora1",
+          "https://www.instagram.com/abubakarxnexora/",
+          "https://www.facebook.com/profile.php?id=61595857236922"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://nexora-labz.netlify.app/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nexora-labz.netlify.app/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Global chrome ===== -->
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Preloader (logo animation) -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader-logo">
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="preGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#7C6AFF"/><stop offset="1" stop-color="#2DD4BF"/>
+          </linearGradient>
+        </defs>
+        <path class="hex" d="M50 8 86 29v42L50 92 14 71V29Z"/>
+        <path class="hex-glow" d="M50 8 86 29v42L50 92 14 71V29Z"/>
+        <text class="nmark" x="50" y="62" text-anchor="middle">N</text>
+      </svg>
+    </div>
+    <div class="preloader-word" aria-hidden="true">
+      <span>N</span><span>E</span><span>X</span><span>O</span><span>R</span><span>A</span>
+      <span class="space"></span>
+      <span>L</span><span>A</span><span>B</span><span>Z</span>
+    </div>
+    <div class="preloader-bar"><i></i></div>
+    <div class="preloader-count">000%</div>
+  </div>
+
+  <div class="page-curtain" aria-hidden="true"><span class="curtain-brand">Nexora Labz</span></div>
+
+  <!-- ===== Navbar ===== -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand" aria-label="Nexora Labz — home">
+        <span class="brand-mark">N</span>
+        <span class="brand-name">NEXORA <em>LABZ</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html"   data-nav="home">Home</a>
+        <a href="about.html"   data-nav="about">About</a>
+        <a href="services.html" data-nav="services">Services</a>
+        <a href="projects.html" data-nav="projects">Projects</a>
+        <a href="figma.html"   data-nav="figma">Figma<span class="soon-tag">Soon</span></a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-btn nav-wa" href="https://wa.me/923700018080?text=Hi%20Abubakar%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp — +92 370 0018080 (opens in a new tab)" title="Chat on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+        </a>
+        <a href="contact.html" class="btn btn-primary btn-sm" data-magnetic="0.3">Start a Project</a>
+        <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav class="mobile-menu" aria-label="Mobile navigation">
+    <a href="index.html"    data-nav="home">Home</a>
+    <a href="about.html"    data-nav="about">About</a>
+    <a href="services.html" data-nav="services">Services</a>
+    <a href="projects.html" data-nav="projects">Projects</a>
+    <a href="figma.html"    data-nav="figma">Figma</a>
+    <a href="contact.html"  data-nav="contact">Contact</a>
+    <div class="mm-socials">
+      <a class="icon-btn" href="https://wa.me/923700018080?text=Hi%20Abubakar%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></a>
+      <a class="icon-btn" href="https://www.instagram.com/abubakarxnexora/" target="_blank" rel="me noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+      <a class="icon-btn" href="https://www.facebook.com/profile.php?id=61595857236922" target="_blank" rel="me noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a class="icon-btn" href="https://github.com/abubakarxnexora1" target="_blank" rel="me noopener" aria-label="GitHub (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/nexora-abubakar/" target="_blank" rel="me noopener" aria-label="LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+  </nav>
+
+  <main id="main">
+  <div class="page-wrap">
+
+    <!-- ================================================================
+         HERO — Three.js particle galaxy + floating geometry
+         ▶▶ VIDEO SLOT: drop your cinematic clip at assets/videos/home.mp4
+            (WebM also supported). If the file is missing the 3D scene
+            below stays visible, so the hero is never empty.
+    ================================================================= -->
+    <section class="hero" id="hero" aria-label="Intro">
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <!-- ▶▶ VIDEO SLOT — replace assets/videos/home.mp4 with your own clip ◀▶ -->
+      <video class="hero-video" data-video-slot muted loop playsinline preload="none" aria-hidden="true">
+        <source src="assets/videos/home.mp4" type="video/mp4">
+        <source src="assets/videos/home.webm" type="video/webm">
+      </video>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-eyebrow" data-hero-item><span class="dot"></span> Nexora Labz — Digital Studio</p>
+          <h1 class="hero-title">
+            <span class="line" data-hero-item>Crafting</span>
+            <span class="line grad-text" data-hero-item>Digital</span>
+            <span class="line" data-hero-item>Experiences</span>
+          </h1>
+          <p class="hero-sub" data-hero-item>
+            Premium websites with cinematic motion, glass-smooth interfaces and
+            pixel-perfect detail — designed &amp; engineered by
+            <strong>Abubakar Khan</strong>.
+          </p>
+          <div class="hero-cta" data-hero-item>
+            <a href="projects.html" class="btn btn-primary" data-magnetic="0.35">
+              Explore My Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="contact.html" class="btn btn-ghost" data-magnetic="0.35">Let's Talk</a>
+            <a class="btn btn-ghost wa-btn" href="https://wa.me/923700018080?text=Hi%20Abubakar%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk." target="_blank" rel="noopener noreferrer" aria-label="Chat with Abubakar on WhatsApp (opens in a new tab)" data-magnetic="0.35">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+              WhatsApp
+            </a>
+          </div>
+          <div class="hero-meta" data-hero-item>
+            <span class="chip"><i class="dot"></i> Available for freelance</span>
+            <span class="chip"><i class="dot"></i> Fast, responsive &amp; SEO-ready</span>
+          </div>
+        </div>
+
+        <!-- Profile photo in animated frame -->
+        <div class="hero-visual" data-hero-item>
+          <div class="photo-ring" aria-hidden="true"></div>
+          <figure class="photo-frame" data-tilt="8">
+            <!-- ▶▶ Your profile photo. Single <picture> source (no CSS background,
+                 no JS swap). After replacing the photo, re-export the
+                 abubakar-480/800/1200.webp variants from the new file. ◀▶ -->
+            <picture>
+              <source type="image/webp"
+                      srcset="assets/images/abubakar-480.webp 480w, assets/images/abubakar-800.webp 800w, assets/images/abubakar-1200.webp 1200w"
+                      sizes="(max-width: 768px) 152vw, 782px">
+              <img src="assets/images/abubakar-opt.jpg" alt="Abubakar Khan — Frontend Developer, founder of Nexora Labz"
+                   width="520" height="620" loading="eager" decoding="async" fetchpriority="high" data-fade>
+            </picture>
+            <figcaption class="sr-only" style="position:absolute;left:-9999px;">Abubakar Khan</figcaption>
+          </figure>
+          <!-- Floating tech chips -->
+          <span class="float-chip fc-1" aria-hidden="true">HTML5</span>
+          <span class="float-chip fc-2" aria-hidden="true">CSS3</span>
+          <span class="float-chip fc-3" aria-hidden="true">JavaScript</span>
+          <span class="float-chip fc-4" aria-hidden="true">GSAP</span>
+          <span class="float-chip fc-5" aria-hidden="true">Responsive</span>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#work" aria-label="Scroll to featured work">
+        <span class="mouse" aria-hidden="true"><i></i></span>
+        <span>Scroll</span>
+      </a>
+    </section>
+
+    <!-- ============ SKILLS MARQUEE ============ -->
+    <section class="skills-strip" aria-label="Skills ticker">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>HTML5 <i>✦</i></span><span>CSS3 <i>✦</i></span><span>JavaScript <i>✦</i></span>
+          <span>Responsive Design <i>✦</i></span><span>GSAP Animations <i>✦</i></span>
+          <span>Web Performance <i>✦</i></span><span>UI Implementation <i>✦</i></span>
+          <span>Git &amp; GitHub <i>✦</i></span><span>Figma <em class="soon-inline">soon</em> <i>✦</i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED WORK — 3D CAROUSEL ============ -->
+    <section class="section work" id="work">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <p class="eyebrow">Featured Work</p>
+          <h2 class="section-title">Live demo <span class="grad-text">projects</span></h2>
+          <p class="section-sub">Six fully-designed mini-websites — drag the carousel or use the arrows, then open any demo live.</p>
+        </div>
+
+        <div class="carousel-stage" data-reveal="scale">
+          <div class="carousel-3d" id="workCarousel" tabindex="0" aria-label="Featured projects carousel — use arrow keys"></div>
+          <div class="carousel-controls">
+            <button class="icon-btn" id="carPrev" aria-label="Previous project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="icon-btn" id="carNext" aria-label="Next project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="work-more" data-reveal>
+          <a class="btn btn-ghost" href="projects.html">View all projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="section stats" aria-label="Studio stats">
+      <div class="container stats-grid">
+        <div class="stat glass" data-reveal>
+          <span class="stat-num" data-count="6" data-suffix="+">0</span>
+          <span class="stat-label">Demo projects built</span>
+        </div>
+        <div class="stat glass" data-reveal style="--reveal-delay:.08s">
+          <span class="stat-num" data-count="15" data-suffix="+">0</span>
+          <span class="stat-label">Tools &amp; technologies</span>
+        </div>
+        <div class="stat glass" data-reveal style="--reveal-delay:.16s">
+          <span class="stat-num" data-count="100" data-suffix="%">0</span>
+          <span class="stat-label">Commitment to craft</span>
+        </div>
+        <div class="stat glass" data-reveal style="--reveal-delay:.24s">
+          <span class="stat-num" data-count="24" data-suffix="/7">0</span>
+          <span class="stat-label">Curiosity &amp; learning</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES TEASER ============ -->
+    <section class="section services-teaser">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">What I do</p>
+          <h2 class="section-title">Services built for <span class="grad-text">impact</span></h2>
+        </div>
+        <div class="teaser-grid">
+          <a href="services.html" class="teaser-card glass" data-reveal data-tilt="6">
+            <span class="t-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </span>
+            <h3>Landing Page</h3>
+            <p>A focused, conversion-driven single page built to turn visitors into customers — clean design, fast loading.</p>
+            <span class="t-link">Learn more →</span>
+          </a>
+          <a href="services.html" class="teaser-card glass" data-reveal style="--reveal-delay:.1s" data-tilt="6">
+            <span class="t-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+            </span>
+            <h3>Business Website</h3>
+            <p>A complete multi-page website for clinics, shops and small businesses — professional design that builds trust.</p>
+            <span class="t-link">Learn more →</span>
+          </a>
+          <a href="services.html" class="teaser-card glass" data-reveal style="--reveal-delay:.2s" data-tilt="6">
+            <span class="t-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2"/><path d="M15 16v-2"/><path d="M8 9h2"/><path d="M20 9h2"/><path d="M17.8 11.8 19 13"/><path d="M15 9h.01"/><path d="M17.8 6.2 19 5"/><path d="m12.2 6.2-1.2-1.2"/><path d="m12.2 11.8-1.2 1.2"/><path d="M3 21h9"/><path d="M9 21a6 6 0 0 0-6-6"/></svg>
+            </span>
+            <h3>Website Animations</h3>
+            <p>Smooth GSAP scroll animations and interactive effects that make your website feel modern and polished.</p>
+            <span class="t-link">Learn more →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section testimonials" aria-label="Testimonials">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <p class="eyebrow">Kind words</p>
+          <h2 class="section-title">What clients <span class="grad-text">say</span></h2>
+        </div>
+
+        <div class="t-slider glass" data-reveal="scale">
+          <div class="t-track" id="tTrack">
+            <!-- ▶▶ REPLACE: sample names/roles — swap in your real client testimonials when you have them ◀▶ -->
+            <figure class="t-slide">
+              <blockquote>“Working with Nexora Labz was effortless. The site is fast, animated beautifully, and our visitors noticed immediately.”</blockquote>
+              <figcaption><span class="t-avatar" aria-hidden="true">SM</span>
+                <span><strong>Sarah Mitchell</strong><br><small>Founder, Bloom &amp; Bean Café</small></span></figcaption>
+            </figure>
+            <figure class="t-slide">
+              <blockquote>“Abubakar turned a rough idea into a polished landing page in days. Communication was clear at every step.”</blockquote>
+              <figcaption><span class="t-avatar" aria-hidden="true">DO</span>
+                <span><strong>David Okafor</strong><br><small>Owner, FitZone Studio</small></span></figcaption>
+            </figure>
+            <figure class="t-slide">
+              <blockquote>“Premium quality at a freelancer's pace. The attention to micro-details is genuinely impressive.”</blockquote>
+              <figcaption><span class="t-avatar" aria-hidden="true">AR</span>
+                <span><strong>Amna Riaz</strong><br><small>Creative Director, Studio Mehr</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="t-nav" id="tNav" role="tablist" aria-label="Testimonial slides"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BANNER ============ -->
+    <section class="section cta">
+      <div class="container">
+        <div class="cta-banner glass" data-reveal="scale">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <p class="eyebrow">Ready when you are</p>
+          <h2 class="section-title">Have an idea?<br><span class="grad-text">Let's build it together.</span></h2>
+          <p class="section-sub">From a single landing page to a full web experience — tell me your vision and get a reply within 24 hours.</p>
+          <div class="hero-cta center">
+            <a href="contact.html" class="btn btn-primary" data-magnetic="0.35">Start a Project
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="about.html" class="btn btn-ghost">Meet Abubakar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="brand" aria-label="Nexora Labz — home">
+            <span class="brand-mark">N</span>
+            <span class="brand-name">NEXORA <em>LABZ</em></span>
+          </a>
+          <p>A one-man digital studio by <strong>Abubakar Khan</strong> — frontend &amp; web developer crafting premium, animated, human-centered web experiences.</p>
+          <p class="footer-contact">
+            <a href="mailto:abubakarxnexora@gmail.com" aria-label="Email Abubakar Khan — Nexora Labz">abubakarxnexora@gmail.com</a>
+            <span aria-hidden="true">·</span>
+            <a href="tel:+923700018080" aria-label="Call +92 370 0018080">+92 370 0018080</a>
+          </p>
+          <div class="socials">
+            <a href="https://wa.me/923700018080?text=Hi%20Abubakar%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></a>
+            <a href="https://www.instagram.com/abubakarxnexora/" target="_blank" rel="me noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a href="https://www.facebook.com/profile.php?id=61595857236922" target="_blank" rel="me noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://github.com/abubakarxnexora1" target="_blank" rel="me noopener" aria-label="GitHub (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+            <a href="https://www.linkedin.com/in/nexora-abubakar/" target="_blank" rel="me noopener" aria-label="LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Pages">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="figma.html">Figma <small style="color:var(--accent-2)">(soon)</small></a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-links" aria-label="Services">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Landing Page</a></li>
+            <li><a href="services.html">Portfolio Website</a></li>
+            <li><a href="services.html">Business Website</a></li>
+            <li><a href="services.html">Design to Code</a></li>
+            <li><a href="services.html">Website Animations</a></li>
+          </ul>
+        </nav>
+
+        <div class="newsletter">
+          <h4>Nexora newsletter</h4>
+          <p>Occasional updates on new projects, experiments and launches. No spam — ever.</p>
+          <form data-newsletter novalidate>
+            <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+            <button class="btn btn-primary" type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span data-year>2025</span> Nexora Labz — designed &amp; coded with <span class="heart">♥</span> by Abubakar Khan.</span>
+        <span>Built with pure HTML, CSS &amp; JavaScript.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- AI Chatbot widget is injected by js/chatbot.js -->
+
+  <!-- Libraries (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Nexora scripts -->
+  <script src="js/main.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
+  <script src="js/home.js" defer></script>
+</body>
+</html>
