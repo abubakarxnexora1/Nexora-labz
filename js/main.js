@@ -591,3 +591,9 @@ NX.onReady(() => {
     form.addEventListener('submit', (e) => e.preventDefault());
   });
 });
+
+window.addEventListener('load', () => {
+  const script = document.createElement('script');
+  script.src = 'js/chatbot.js';
+  document.body.appendChild(script);
+}, { once: true });

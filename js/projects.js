@@ -158,6 +158,7 @@
 
           /* cancel any pending hide timer from a previous filter click */
           clearTimeout(card._hideT);
+          cancelAnimationFrame(card._filterRaf);
 
           if (match) {
             card.classList.remove('hide');
@@ -167,8 +168,12 @@
             /* staggered pop-in */
             card.classList.remove('fade-out', 'filter-in');
             card.style.setProperty('--stagger', `${shown * STAGGER}ms`);
-            void card.offsetWidth;                    // restart the animation
-            card.classList.add('filter-in');
+            card._filterRaf = requestAnimationFrame(() => {
+              card._filterRaf = requestAnimationFrame(() => {
+                card._filterRaf = null;
+                if (!card.classList.contains('fade-out')) card.classList.add('filter-in');
+              });
+            });
             card.addEventListener('animationend', () => {
               card.classList.remove('filter-in');
               card.style.removeProperty('--stagger');
