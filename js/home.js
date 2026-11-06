@@ -186,10 +186,10 @@
   const PROJECTS = [
     { title: 'Veloura Store',     cat: 'Fashion E-commerce',  href: 'projects/project-4/index.html', art: 'art-4', img: 'assets/images/projects/veloura-800.webp', width: 800, height: 600, url: 'veloura.demo' },
     { title: 'Flowbit SaaS',      cat: 'Tech Startup',        href: 'projects/project-6/index.html', art: 'art-6', img: 'assets/images/projects/flowbit-800.webp', width: 800, height: 600, url: 'flowbit.demo' },
-    { title: 'Haven Estates',     cat: 'Real Estate',         href: 'projects/project-3/index.html', art: 'art-3', img: 'assets/images/projects/haven-800.webp', width: 800, height: 600, url: 'havenestates.demo' },
     { title: 'Saffron & Smoke',   cat: 'Restaurant & Cafe',   href: 'projects/project-1/index.html', art: 'art-1', img: 'assets/images/projects/saffron-800.webp', width: 800, height: 600, url: 'saffronandsmoke.demo' },
     { title: 'IronPulse Gym',     cat: 'Fitness Landing',     href: 'projects/project-2/index.html', art: 'art-2', img: 'assets/images/projects/ironpulse-800.webp', width: 800, height: 600, url: 'ironpulse.demo' },
     { title: 'Wanderlust Trails', cat: 'Travel & Tourism',    href: 'projects/project-5/index.html', art: 'art-5', img: 'assets/images/projects/wanderlust-800.webp', width: 800, height: 600, url: 'wanderlusttrails.demo' },
+    { title: 'Haven Estates',     cat: 'Real Estate',         href: 'projects/project-3/index.html', art: 'art-3', img: 'assets/images/projects/haven-800.webp', width: 800, height: 600, url: 'havenestates.demo' },
   ];
 
   function initCarousel() {

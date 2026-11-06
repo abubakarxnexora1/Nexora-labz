@@ -136,6 +136,9 @@
   ---------------------------------------------------------- */
   function initFilters() {
     const buttons = $$('.filter');
+    const grid = document.getElementById('pjGrid');
+    const lastCard = grid && grid.querySelector('[data-order="last"]');
+    if (lastCard) grid.appendChild(lastCard);
     const cards = $$('.pj-card');            // grid cards only (featured card excluded)
     const countEl = document.getElementById('filterCount');
     const emptyEl = document.getElementById('pjEmpty');
